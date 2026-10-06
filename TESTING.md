@@ -1,0 +1,1 @@
+Seven pilot unit tests pass. Independent artifact verification checks all checkpoints and saved final models. The parent project's historical test suite could not import scikit-learn in the bundled runtime; this package's tests do not require it. See outputs/multiclass_no_replay_pilot/verification.json.

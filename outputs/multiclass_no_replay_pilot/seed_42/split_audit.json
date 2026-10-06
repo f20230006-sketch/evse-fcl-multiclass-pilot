@@ -1,0 +1,772 @@
+{
+  "status": "passed",
+  "sampled_rows": 36172,
+  "unique_source_keys": 36172,
+  "persistent_role_counts": {
+    "fitting": 23513,
+    "calibration": 5425,
+    "evaluation": 7234
+  },
+  "preprocessing_fit_rows": 9803,
+  "unique_benign_support_by_role": {
+    "fitting": 53,
+    "calibration": 13,
+    "evaluation": 16
+  },
+  "unique_benign_evaluation_source_keys": 16,
+  "task_checks": [
+    {
+      "task": "reconnaissance",
+      "training_rows": 9803,
+      "calibration_rows": 2263,
+      "evaluation_rows": 3016,
+      "train_cal_overlap": 0,
+      "train_eval_overlap": 0,
+      "cal_eval_overlap": 0
+    },
+    {
+      "task": "flooding",
+      "training_rows": 9842,
+      "calibration_rows": 2273,
+      "evaluation_rows": 3029,
+      "train_cal_overlap": 0,
+      "train_eval_overlap": 0,
+      "cal_eval_overlap": 0
+    },
+    {
+      "task": "low_rate_rare",
+      "training_rows": 2023,
+      "calibration_rows": 466,
+      "evaluation_rows": 621,
+      "train_cal_overlap": 0,
+      "train_eval_overlap": 0,
+      "cal_eval_overlap": 0
+    },
+    {
+      "task": "post_rare_vulnerability",
+      "training_rows": 2004,
+      "calibration_rows": 462,
+      "evaluation_rows": 616,
+      "train_cal_overlap": 0,
+      "train_eval_overlap": 0,
+      "cal_eval_overlap": 0
+    }
+  ],
+  "per_client_role_counts": [
+    {
+      "client": "benign_starved",
+      "role": "fitting",
+      "rows": 2345,
+      "benign_rows": 0,
+      "attack_rows": 2345
+    },
+    {
+      "client": "benign_starved",
+      "role": "calibration",
+      "rows": 542,
+      "benign_rows": 0,
+      "attack_rows": 542
+    },
+    {
+      "client": "benign_starved",
+      "role": "evaluation",
+      "rows": 722,
+      "benign_rows": 0,
+      "attack_rows": 722
+    },
+    {
+      "client": "flooding_heavy",
+      "role": "fitting",
+      "rows": 6562,
+      "benign_rows": 8,
+      "attack_rows": 6554
+    },
+    {
+      "client": "flooding_heavy",
+      "role": "calibration",
+      "rows": 1516,
+      "benign_rows": 2,
+      "attack_rows": 1514
+    },
+    {
+      "client": "flooding_heavy",
+      "role": "evaluation",
+      "rows": 2019,
+      "benign_rows": 2,
+      "attack_rows": 2017
+    },
+    {
+      "client": "low_rate_rare_heavy",
+      "role": "fitting",
+      "rows": 3141,
+      "benign_rows": 5,
+      "attack_rows": 3136
+    },
+    {
+      "client": "low_rate_rare_heavy",
+      "role": "calibration",
+      "rows": 720,
+      "benign_rows": 1,
+      "attack_rows": 719
+    },
+    {
+      "client": "low_rate_rare_heavy",
+      "role": "evaluation",
+      "rows": 966,
+      "benign_rows": 2,
+      "attack_rows": 964
+    },
+    {
+      "client": "mixed_open_set",
+      "role": "fitting",
+      "rows": 4900,
+      "benign_rows": 11,
+      "attack_rows": 4889
+    },
+    {
+      "client": "mixed_open_set",
+      "role": "calibration",
+      "rows": 1130,
+      "benign_rows": 3,
+      "attack_rows": 1127
+    },
+    {
+      "client": "mixed_open_set",
+      "role": "evaluation",
+      "rows": 1507,
+      "benign_rows": 3,
+      "attack_rows": 1504
+    },
+    {
+      "client": "reconnaissance_heavy",
+      "role": "fitting",
+      "rows": 6565,
+      "benign_rows": 29,
+      "attack_rows": 6536
+    },
+    {
+      "client": "reconnaissance_heavy",
+      "role": "calibration",
+      "rows": 1517,
+      "benign_rows": 7,
+      "attack_rows": 1510
+    },
+    {
+      "client": "reconnaissance_heavy",
+      "role": "evaluation",
+      "rows": 2020,
+      "benign_rows": 9,
+      "attack_rows": 2011
+    }
+  ],
+  "assertions": {
+    "each_source_row_unique": true,
+    "each_row_exactly_one_client": true,
+    "persistent_roles_disjoint": true,
+    "preprocessing_fit_uses_fitting_only": true,
+    "evaluation_excluded_from_preprocessing_fit": true,
+    "calibration_excluded_from_preprocessing_fit": true,
+    "task_train_cal_eval_disjoint": true
+  },
+  "persistent_role_assignment": {
+    "overall": {
+      "fitting": 23513,
+      "calibration": 5425,
+      "evaluation": 7234
+    },
+    "by_client_label": [
+      {
+        "client": "benign_starved",
+        "label": "Aggressive_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "ICMP_Flood",
+        "rows": 6,
+        "fitting": 4,
+        "calibration": 1,
+        "evaluation": 1
+      },
+      {
+        "client": "benign_starved",
+        "label": "ICMP_Fragmentation",
+        "rows": 3,
+        "fitting": 1,
+        "calibration": 1,
+        "evaluation": 1
+      },
+      {
+        "client": "benign_starved",
+        "label": "OS_Fingerprinting",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "PSHACK_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "SYN_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "SYN_Stealth_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "Service_Version_Detection",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "Slowloris_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "SynonymousIP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "TCP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "TCP_Port_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "UDP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "benign_starved",
+        "label": "Vulnerability_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "Aggressive_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "Benign",
+        "rows": 12,
+        "fitting": 8,
+        "calibration": 2,
+        "evaluation": 2
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "ICMP_Flood",
+        "rows": 34,
+        "fitting": 22,
+        "calibration": 5,
+        "evaluation": 7
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "ICMP_Fragmentation",
+        "rows": 1,
+        "fitting": 1,
+        "calibration": 0,
+        "evaluation": 0
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "OS_Fingerprinting",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "PSHACK_Flood",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "SYN_Flood",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "SYN_Stealth_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "Service_Version_Detection",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "Slowloris_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "SynonymousIP_Flood",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "TCP_Flood",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "TCP_Port_Scan",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "UDP_Flood",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "flooding_heavy",
+        "label": "Vulnerability_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "Aggressive_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "Benign",
+        "rows": 8,
+        "fitting": 5,
+        "calibration": 1,
+        "evaluation": 2
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "ICMP_Flood",
+        "rows": 3,
+        "fitting": 1,
+        "calibration": 1,
+        "evaluation": 1
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "ICMP_Fragmentation",
+        "rows": 16,
+        "fitting": 11,
+        "calibration": 2,
+        "evaluation": 3
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "OS_Fingerprinting",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "PSHACK_Flood",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "SYN_Flood",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "SYN_Stealth_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "Service_Version_Detection",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "Slowloris_Scan",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "SynonymousIP_Flood",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "TCP_Flood",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "TCP_Port_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "UDP_Flood",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "low_rate_rare_heavy",
+        "label": "Vulnerability_Scan",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "Aggressive_Scan",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "Benign",
+        "rows": 17,
+        "fitting": 11,
+        "calibration": 3,
+        "evaluation": 3
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "ICMP_Flood",
+        "rows": 13,
+        "fitting": 8,
+        "calibration": 2,
+        "evaluation": 3
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "ICMP_Fragmentation",
+        "rows": 7,
+        "fitting": 5,
+        "calibration": 1,
+        "evaluation": 1
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "OS_Fingerprinting",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "PSHACK_Flood",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "SYN_Flood",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "SYN_Stealth_Scan",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "Service_Version_Detection",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "Slowloris_Scan",
+        "rows": 750,
+        "fitting": 488,
+        "calibration": 112,
+        "evaluation": 150
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "SynonymousIP_Flood",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "TCP_Flood",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "TCP_Port_Scan",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "UDP_Flood",
+        "rows": 600,
+        "fitting": 390,
+        "calibration": 90,
+        "evaluation": 120
+      },
+      {
+        "client": "mixed_open_set",
+        "label": "Vulnerability_Scan",
+        "rows": 750,
+        "fitting": 488,
+        "calibration": 112,
+        "evaluation": 150
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "Aggressive_Scan",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "Benign",
+        "rows": 45,
+        "fitting": 29,
+        "calibration": 7,
+        "evaluation": 9
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "ICMP_Flood",
+        "rows": 6,
+        "fitting": 4,
+        "calibration": 1,
+        "evaluation": 1
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "ICMP_Fragmentation",
+        "rows": 1,
+        "fitting": 1,
+        "calibration": 0,
+        "evaluation": 0
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "OS_Fingerprinting",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "PSHACK_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "SYN_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "SYN_Stealth_Scan",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "Service_Version_Detection",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "Slowloris_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "SynonymousIP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "TCP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "TCP_Port_Scan",
+        "rows": 1650,
+        "fitting": 1072,
+        "calibration": 248,
+        "evaluation": 330
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "UDP_Flood",
+        "rows": 300,
+        "fitting": 195,
+        "calibration": 45,
+        "evaluation": 60
+      },
+      {
+        "client": "reconnaissance_heavy",
+        "label": "Vulnerability_Scan",
+        "rows": 150,
+        "fitting": 98,
+        "calibration": 22,
+        "evaluation": 30
+      }
+    ]
+  }
+}

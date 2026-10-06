@@ -1,0 +1,66 @@
+{
+  "config": {
+    "experiment": "multiclass_no_replay_forgetting_pilot",
+    "data": "data/official/network_traffic",
+    "label_column": "Label",
+    "max_rows_per_attack": 3000,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "calibration_seed": 42,
+    "attack_order": [
+      "reconnaissance",
+      "flooding",
+      "low_rate_rare",
+      "post_rare_vulnerability"
+    ],
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "optimizer": "Adam",
+    "learning_rates_tried": [
+      0.0003,
+      0.001,
+      0.003
+    ],
+    "local_epochs": 5,
+    "rounds_per_task": 5,
+    "batch_size": 128,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": null,
+    "numeric_z_clip": 5.0,
+    "role_fractions": [
+      0.65,
+      0.15,
+      0.2
+    ],
+    "output_policy": "mask_globally_unseen_classes; classify_among_all_seen_classes_without_task_id",
+    "adam_state": "reset_on_every_broadcast",
+    "loss": "unweighted_multiclass_cross_entropy",
+    "minimum_benign_evaluation_rows": 200,
+    "minimum_initial_old_task_accuracy": 0.5,
+    "clear_drop_percentage_points": 10.0,
+    "minimum_seed_fraction_with_clear_drop": 0.6666666666666666,
+    "output_dir": "outputs/multiclass_no_replay_pilot"
+  },
+  "source_hashes": {
+    "src/evse_ids/multiclass_pilot.py": "53d564a043e67d3e52205ad5d884eea2396990212edd23cd34d012bc848821e2",
+    "src/evse_ids/continual_stable.py": "4a3d8d61175798657d7a40ae65f5bfce0a96de1d5746d33e38efe12cdc46e886",
+    "src/evse_ids/data.py": "51599b619e5aecc2a15672b02850403d2d4038e6590c222127dfc96000d581a5",
+    "src/evse_ids/validation.py": "c0f11021ffbc1ec9161452676540b6b39f1b446d38256c0fafe8f014c069b35f",
+    "scripts/run_multiclass_no_replay_pilot.py": "b8cd6b68001a3af68cb78a498336935c971ce32af0b56b059a4aa817e61f0ba9",
+    "configs/multiclass_no_replay_pilot.json": "7d9dbc750bce21af15e6fed7364a957ffbe72a23eb75df5eeb5e4e25f89628b0"
+  },
+  "allow_limited_benign_diagnostic": true,
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cu129",
+    "numpy": "2.1.2",
+    "pandas": "3.0.1"
+  },
+  "all_settings_fixed_except": "learning rate selected from recorded grid on calibration data only",
+  "pilot_scope": "three seeds, one attack order, FedAvg no replay only"
+}
