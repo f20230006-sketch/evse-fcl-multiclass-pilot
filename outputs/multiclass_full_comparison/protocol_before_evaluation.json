@@ -1,0 +1,464 @@
+{
+  "config": {
+    "experiment": "multiclass_full_comparison",
+    "data": "data/official/network_traffic",
+    "label_column": "Label",
+    "max_rows_per_attack": 3000,
+    "sampling_seed": 42,
+    "split_seed": 42,
+    "calibration_seed": 42,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "orders": {
+      "order_1": [
+        "reconnaissance",
+        "flooding",
+        "low_rate_rare",
+        "post_rare_vulnerability"
+      ],
+      "order_2": [
+        "flooding",
+        "reconnaissance",
+        "post_rare_vulnerability",
+        "low_rate_rare"
+      ],
+      "order_3": [
+        "low_rate_rare",
+        "post_rare_vulnerability",
+        "flooding",
+        "reconnaissance"
+      ]
+    },
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "optimizer": "Adam",
+    "local_epochs": 5,
+    "rounds_per_task": 5,
+    "batch_size": 128,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": null,
+    "numeric_z_clip": 5.0,
+    "role_fractions": [
+      0.65,
+      0.15,
+      0.2
+    ],
+    "federated_memory_per_client": 60,
+    "centralized_memory_total": 300,
+    "protected_minimum_fraction": 0.2,
+    "fisher_max_examples_per_client_task": 128,
+    "workers": 3,
+    "torch_threads_per_worker": 1,
+    "environments": [
+      "federated",
+      "centralized"
+    ],
+    "methods": [
+      "no_replay",
+      "uniform_60",
+      "protected_60",
+      "ewc",
+      "agem",
+      "joint",
+      "fedprox_no_replay"
+    ],
+    "grids": {
+      "no_replay": [
+        {
+          "learning_rate": 0.001
+        },
+        {
+          "learning_rate": 0.003
+        }
+      ],
+      "uniform_60": [
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5
+        }
+      ],
+      "protected_60": [
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5
+        }
+      ],
+      "ewc": [
+        {
+          "learning_rate": 0.003,
+          "ewc_lambda": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "ewc_lambda": 100.0
+        }
+      ],
+      "agem": [
+        {
+          "learning_rate": 0.003,
+          "reference_batch_size": 32
+        },
+        {
+          "learning_rate": 0.003,
+          "reference_batch_size": 64
+        }
+      ],
+      "joint": [
+        {
+          "learning_rate": 0.001
+        },
+        {
+          "learning_rate": 0.003
+        }
+      ],
+      "fedprox_no_replay": [
+        {
+          "learning_rate": 0.003,
+          "proximal_mu": 0.001
+        },
+        {
+          "learning_rate": 0.003,
+          "proximal_mu": 0.01
+        }
+      ]
+    },
+    "output_dir": "outputs/multiclass_full_comparison",
+    "allow_insufficient_benign": true,
+    "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets."
+  },
+  "source_hashes": {
+    "src/evse_ids/full_comparison.py": "368f3191e9f88f103a542cf6695ee21c3f8bcb3b9461bc33170d2373db5ed79e",
+    "src/evse_ids/multiclass_pilot.py": "53d564a043e67d3e52205ad5d884eea2396990212edd23cd34d012bc848821e2",
+    "src/evse_ids/continual_ablation.py": "d4f230ab7a712daeaefb7aa875d17d884774d90df7319c4dcf2cba30ba87e08d",
+    "src/evse_ids/continual_stable.py": "4a3d8d61175798657d7a40ae65f5bfce0a96de1d5746d33e38efe12cdc46e886",
+    "src/evse_ids/data.py": "51599b619e5aecc2a15672b02850403d2d4038e6590c222127dfc96000d581a5",
+    "src/evse_ids/validation.py": "c0f11021ffbc1ec9161452676540b6b39f1b446d38256c0fafe8f014c069b35f",
+    "scripts/run_full_multiclass_comparison.py": "ea853263357f3167c9f4199a20ab64d58f198ebaaba495b6ab0ff644e31a945d",
+    "configs/multiclass_full_comparison.json": "40525d06440ee5591dd23cd97d927ecbd2f7965ca0bb0ac7ccd06d5cb0322e7f"
+  },
+  "fingerprint": "73663141af43e1cb64b10e2581cd474f206a75bf2fb30e57ac28c81e5d31f0af",
+  "input_inventory": [
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-Aggressive-scan.csv",
+      "bytes": 3808211,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-Charging-Benign.csv",
+      "bytes": 9566,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-icmp-flood.csv",
+      "bytes": 2700,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-icmp-fragmentation.csv",
+      "bytes": 6613,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-os-fingerprinting.csv",
+      "bytes": 1760336,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-portscan.csv",
+      "bytes": 2980843,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-push-ack-flood.csv",
+      "bytes": 28861125,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-service-detection.csv",
+      "bytes": 1336628,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-slowLoris-scan.csv",
+      "bytes": 776618,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-syn-flood.csv",
+      "bytes": 27888725,
+      "modified_ns": 1705016932000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-syn-stealth.csv",
+      "bytes": 2971387,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-synonymous-ip.csv",
+      "bytes": 27595814,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-tcp-flood.csv",
+      "bytes": 27540329,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-udp-flood.csv",
+      "bytes": 3241287,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-charging-vulnerability-scan.csv",
+      "bytes": 3402801,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-aggressive-scan.csv",
+      "bytes": 817635,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-benign.csv",
+      "bytes": 41289,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-icmp-fragmentation.csv",
+      "bytes": 3840,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-os-fingerprinting.csv",
+      "bytes": 1348249,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-portscan.csv",
+      "bytes": 1825579,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-service-detection.csv",
+      "bytes": 1215122,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-slowloris-scan.csv",
+      "bytes": 861355,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-syn-flood.csv",
+      "bytes": 27813570,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-syn-stealth-scan.csv",
+      "bytes": 2487331,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-synonymous-ip.csv",
+      "bytes": 27605569,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-tcp-flood.csv",
+      "bytes": 27681867,
+      "modified_ns": 1705016906000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-udp-flood.csv",
+      "bytes": 3324122,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-A\\csv\\EVSE-A-idle-vulnerability-scan.csv",
+      "bytes": 1199252,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-aggressive-scan.csv",
+      "bytes": 14339375,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-icmp-flood.csv",
+      "bytes": 13212,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-os-fingerprinting.csv",
+      "bytes": 25631618,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-port-scan.csv",
+      "bytes": 66963838,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-push-ack-flood.csv",
+      "bytes": 32721505,
+      "modified_ns": 1705016908000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-service-detection-scan.csv",
+      "bytes": 62326329,
+      "modified_ns": 1705016910000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-syn-flood.csv",
+      "bytes": 31861435,
+      "modified_ns": 1705016910000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-syn-stealth.csv",
+      "bytes": 80840837,
+      "modified_ns": 1705016912000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-synonymous-ip-flood.csv",
+      "bytes": 28519754,
+      "modified_ns": 1705016912000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-tcp-flood.csv",
+      "bytes": 28172969,
+      "modified_ns": 1705016912000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-udp-flood.csv",
+      "bytes": 3498306,
+      "modified_ns": 1705016914000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-charging-vulnerability-scan.csv",
+      "bytes": 41659756,
+      "modified_ns": 1705016914000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-aggressive-scan.csv",
+      "bytes": 13620727,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-icmp-flood.csv",
+      "bytes": 13212,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-icmp-fragmentation.csv",
+      "bytes": 7493,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-os-fingerprinting.csv",
+      "bytes": 17249192,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-port-scan.csv",
+      "bytes": 29468136,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-push-ack-flood.csv",
+      "bytes": 32424375,
+      "modified_ns": 1705016918000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-service-detection.csv",
+      "bytes": 12552914,
+      "modified_ns": 1705016920000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-syn-flood.csv",
+      "bytes": 31354404,
+      "modified_ns": 1705016936000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-syn-stealth-scan.csv",
+      "bytes": 27701832,
+      "modified_ns": 1705016938000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-synonymous-ip-flood.csv",
+      "bytes": 28266236,
+      "modified_ns": 1705016938000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-tcp-flood.csv",
+      "bytes": 28278673,
+      "modified_ns": 1705016938000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-udp-flood.csv",
+      "bytes": 3308648,
+      "modified_ns": 1705016938000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-idle-vulnerability-scan.csv",
+      "bytes": 19429170,
+      "modified_ns": 1705016938000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-aggressive-scan.csv",
+      "bytes": 6105303,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-os-fingerprinting.csv",
+      "bytes": 6786268,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-port-scan.csv",
+      "bytes": 58620302,
+      "modified_ns": 1705016934000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-service-detection.csv",
+      "bytes": 32358839,
+      "modified_ns": 1705016936000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-syn-stealth-scan.csv",
+      "bytes": 84629944,
+      "modified_ns": 1705016936000000000
+    },
+    {
+      "path": "EVSE-B\\csv\\EVSE-B-MaliciousEV-vulnerability-scan.csv",
+      "bytes": 21147730,
+      "modified_ns": 1705016936000000000
+    }
+  ],
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cu129",
+    "pandas": "3.0.1"
+  },
+  "sampling_and_roles": "Fixed seed-42 sample, client allocation and persistent roles across all training seeds and attack orders",
+  "full_comparison_authorization": "User explicitly instructed to proceed despite class imbalance; supplied additional data excluded"
+}

@@ -1,25 +1,34 @@
-# EVSE federated continual learning: multiclass first check
+# EVSE federated continual learning: multiclass comparison
 
-This repository contains the supervisor-requested no-replay forgetting pilot, not a completed full comparison.
+The requested full study is complete: **10 training seeds, three attack orders, federated and centralized environments, seven methods**, with 84 calibration-only trials and 420 evaluated runs. Supplied additional datasets were excluded as instructed. Original no-replay pilot evidence remains preserved.
 
-The 64/32 ReLU MLP with Adam showed large drops in old attack-type accuracy across three seeds. Benign test support remains insufficient: only 16 genuine benign test flows per seed, and none at the benign-starved client. These are diagnostic results, not evidence of protected replay effectiveness.
+Read [the results](outputs/multiclass_full_comparison/FULL_COMPARISON_RESULTS.md), [the protocol](docs/research/Full_Comparison_Protocol_2026_10_06.md), and [verification](outputs/multiclass_full_comparison/verification.json).
 
-Read `outputs/multiclass_no_replay_pilot/SUPERVISOR_FIRST_CHECK.md` and `docs/research/Multiclass_Pilot_Protocol_2026_10_06.md`. Split manifests, calibration trials, per-client metrics, checkpoint probabilities, and model weights are included. Raw traffic and local caches are excluded.
+## Methods
+
+No replay, uniform replay 60 per client, protected replay 60 per client, EWC, A-GEM with Adam (documented adaptation), joint/offline reference, and FedProx/no replay. Centralized replay uses 300 total slots to match the five-client system budget. The MLP uses 64/32 hidden units, ReLU, Adam and five local epochs per round. No aggressive gradient clipping is applied.
+
+## Evidence
+
+Per-run and per-client metrics, per-order summaries, paired contrasts, per-class supports/AUROC/AP, all calibration trials, split manifests, local loss logs, memory/Fisher provenance, and final models are included in Git. Compressed row-level checkpoint probabilities are distributed in the accompanying evidence ZIP rather than large Git blobs. Raw CSVs/PCAPs, pickle sample caches, and prepared feature tensors are excluded. The archive can be reconstructed with the packaging script after restoring local prerequisites.
 
 ## Reproduce
 
-1. Use Python 3.11 or later; install `requirements-multiclass.txt` in a virtual environment.
-2. Obtain the official CICEVSE2024 network-flow CSVs and arrange them under `data/official/network_traffic` with the EVSE-A/EVSE-B filename and directory organization preserved. Input-file inventory and source-file/source-row identifiers are saved with the evidence. Do not merge host-event data into the flow schema.
-3. Set `PYTHONPATH` to this repository's `src` directory and run `python -m unittest discover -s tests -p test_multiclass_pilot.py -v`.
-4. Run `python scripts/run_multiclass_no_replay_pilot.py --allow-limited-benign-diagnostic` to reproduce the explicitly limited first check. Without the flag the runner stops on benign support.
-5. Run `python scripts/verify_multiclass_pilot.py` and `python scripts/report_multiclass_pilot.py` after reproducing the sample caches. The verifier reconstructs final predictions from frozen preprocessing and saved model states, and independently checks checkpoint accuracy against row-level predictions.
+Use an isolated Python environment with `requirements-multiclass.txt`. The exact recorded versions are in each experiment's protocol JSON. Obtain the original CICEVSE2024 network-flow CSVs under `data/official/network_traffic` with filenames/directories preserved. Library and platform changes may change exact numeric results.
 
-The recorded run used Python/runtime versions in `protocol_before_evaluation.json`. Reproduction requires the same source dataset. Training is deterministic on the recorded CPU setup; exact equality across different library/platform versions is not guaranteed.
+```powershell
+$env:PYTHONPATH = "$PWD/src"
+python -m unittest discover -s tests -p 'test_*comparison.py' -v
+python -m unittest discover -s tests -p test_multiclass_pilot.py -v
+python scripts/run_full_multiclass_comparison.py
+python scripts/report_full_multiclass_comparison.py
+python scripts/verify_full_multiclass_comparison.py
+```
 
-## Gate
+For a fresh experiment, copy the configuration and use a new output directory, preserving published evidence. To verify published model/probability evidence locally, restore checkpoint probabilities from the evidence ZIP and recreate original local prepared tensors; the `--prepare-only` runner path recreates tensors from matching original raw inputs, subject to inventory/source checks. Prepared tensors are deliberately not distributed. Published completion stamps represent original completed jobs; use a fresh output directory to retrain instead of resuming them.
 
-Do not run a full replay/EWC/DER++/joint or centralized comparison before presenting the first-check result to the supervisor and resolving the benign-data evaluation design. Reconnaissance initial learning is also weak and must be disclosed. The ten-seed/three-order study and four-page manuscript are later steps.
+## Interpretation
 
-## Data and security
+The user authorized proceeding despite imbalance. Only 16 original benign evaluation flows are available; FPR at the zero-benign client is undefined. These limitations are disclosed rather than silently repaired. Ten seeds vary training randomness on one fixed split, not ten independent datasets. Separately calibrated environments/order settings affect interpretation of the federated-centralized interaction. All claims must follow the measured protected-versus-uniform and station-level results.
 
-This package includes split identifiers and derived experimental evidence, not raw CSVs or PCAPs. Follow the original dataset's distribution terms. No access tokens, passwords, private mail, or local raw-feature caches are included.
+The target manuscript venue is IEEE Networking Letters (four pages). This repository is reproducibility evidence, not a claim that the study is publication-ready.
