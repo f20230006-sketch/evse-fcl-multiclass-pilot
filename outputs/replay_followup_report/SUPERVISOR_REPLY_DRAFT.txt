@@ -1,0 +1,27 @@
+Subject: Follow-up FCL results — class-balanced baseline, joint confusion and memory sweep
+
+Dear Ma'am,
+
+As requested, I have completed the six follow-up items. The package includes the confusion matrices, raw results, code/configurations, verification, and a summary organized by your email requests.
+
+The class-balanced baseline changes the interpretation. At memory 60 per federated client, old-attack type accuracy is 47.68% for class-balanced replay versus 42.78% for protected replay. However, protected replay retains higher rare-attack recall: 86.48% versus 72.09%. The protected-minus-balanced paired differences are -4.90 [-7.42, -2.38] percentage points for old accuracy and +14.39 [11.86, 16.92] for rare recall. Centralized results show the same retention/rare-recall trade-off.
+
+Joint confusion matrices show recurring scan-type confusion. Joint fitting accuracy is only 57.61% federated and 60.11% centralized, close to evaluation accuracy, so the present model/training protocol also struggles on its training data. We cannot conclude that type ambiguity alone causes the low joint result. I have included family-level scoring using the pre-existing task groups alongside the type results; no training labels were merged.
+
+The memory sweep used 60, 120 and 300 slots per client, with matching centralized system totals of 300, 600 and 1,500. All new settings were selected on calibration data only. Federated old-accuracy / rare-recall percentages are:
+- Memory 60: uniform: 35.31 / 67.18; class_balanced: 47.68 / 72.09; protected: 42.78 / 86.48.
+- Memory 120: uniform: 48.09 / 80.05; class_balanced: 50.53 / 78.61; protected: 49.94 / 88.34.
+- Memory 300: uniform: 60.08 / 86.87; class_balanced: 53.23 / 88.53; protected: 61.75 / 95.37.
+
+At memory 300, protected replay retains a smaller but supported old-accuracy advantage over uniform (+1.67 points, interval 1.19–2.14). It also exceeds the original joint reference in federated old accuracy (61.75% versus 55.39%), so that reference should not be described as a demonstrated upper bound; its optimization/exposure schedule differs from continual rehearsal.
+
+EWC and A-GEM results and paired intervals against protected replay are included in the same four-metric format. The order-specific tables show that the benefit is not uniform across all three attack orders, so the summary records both gains and exceptions.
+
+Regarding the excluded data: the OCPP benign source contains 163,570 rows, but its schema and capture grouping are incompatible with the current study. The two supplied ZIPs are duplicate copies. The CICEVSE benign CSVs also duplicate existing records and add no new observations. The detailed source/compatibility audit is included; the original 16 benign evaluation examples remain the available support.
+
+There were 84 new calibration trials and 420 new evaluation runs; original comparison results were preserved. Seventeen relevant unit tests passed, and the verification reports cover all new models, prediction rows, splits, memory allocations and paired calculations.
+
+The attached/linked deliverables include the full summary and raw evidence. Please use the updated class-balanced trade-off and per-order findings when reviewing the contribution.
+
+Best regards,
+Yuvaraj
