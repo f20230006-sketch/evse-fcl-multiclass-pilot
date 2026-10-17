@@ -1,0 +1,59 @@
+{
+  "config": {
+    "scan_types": [
+      "Aggressive_Scan",
+      "OS_Fingerprinting",
+      "SYN_Stealth_Scan",
+      "Service_Version_Detection",
+      "TCP_Port_Scan",
+      "Vulnerability_Scan"
+    ],
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "calibration_seed": 42,
+    "orders": [
+      "order_1",
+      "order_2",
+      "order_3"
+    ],
+    "n_estimators": 200,
+    "max_features": "sqrt",
+    "class_weight": null,
+    "bootstrap": true,
+    "n_jobs": 3,
+    "grid": [
+      {
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      {
+        "max_depth": 16,
+        "min_samples_leaf": 5
+      }
+    ],
+    "selection": "calibration balanced accuracy, tie first candidate",
+    "training_scope": "pooled scan-only fitting rows; no continual model training",
+    "near_chance_band_percentage_points": 5,
+    "no_refit_on_calibration": true
+  },
+  "source_and_input_hashes": {
+    "outputs\\multiclass_full_comparison\\splits\\order_1\\prepared_local_only.pt": "2f1131533c9cd48a341b51d4e2453e9d7a6c232dfc5e11dbad670d223aa480d1",
+    "outputs\\multiclass_full_comparison\\splits\\order_2\\prepared_local_only.pt": "de4f32f3edf6233f7fc475dbeaf42a17bebd91c5706b808c7bbeea68a6b15736",
+    "outputs\\multiclass_full_comparison\\splits\\order_3\\prepared_local_only.pt": "7a2bdd9137ccb5e96be9b8ca5aa994f272fcda8c4631e3e186fcd06799191436",
+    "scripts/run_scan_random_forest.py": "210bd5e68c6b75cb18a85a18190e7ff49ed711fbab0053c537e94e2721288766",
+    "src/evse_ids/scan_final.py": "9787964112cda529564596b036671d2ae40b22a72274cd9d4735cb6a7b388ea1"
+  },
+  "fingerprint": "add2f5a02102f55a4a3217ab935d38e1129ec870066733c408d099ca1f1cb1e7",
+  "sklearn_version": "1.9.1",
+  "numpy_version": "2.1.2"
+}

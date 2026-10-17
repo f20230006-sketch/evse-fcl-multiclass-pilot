@@ -1,5 +1,16 @@
 # EVSE multiclass federated continual learning
 
+## Final checks — 17 October 2026
+
+Read the [two-page summary](outputs/final_scan_analysis/SUMMARY.pdf) or [Markdown summary](outputs/final_scan_analysis/SUMMARY.md), then [INFO.md](outputs/final_scan_analysis/INFO.md) for all merged/rare/client tables. The scan-only Random Forest achieves 34.25% versus 16.67% chance, so intrinsic indistinguishability of all six scans is not established. All 840 saved MLP runs were re-scored without retraining. Separate Slowloris/fragmentation recalls and paired federation interactions are included; the memory-60 protection-over-uniform interaction is not significant. The supported Slowloris interaction at memory 300 is exploratory and unadjusted for multiplicity.
+
+The six merged scan probabilities produce ten output classes; Slowloris stays separate. Original task cohorts and original type-level replay memories are retained for this alternative scoring view. The 33.33% rare metric is explained by last-task order effects over 600 Slowloris and five fragmentation examples, not an always-correct class. All source predictions and splits remain unchanged.
+
+Scripts and compact evidence are in Git. Two clean ZIPs are provided separately: a 2.2 MB review bundle and a 329 MB raw-result bundle. Neither contains email drafts or code. Original MLP probabilities are referenced by digest rather than duplicated; final merged probabilities and RF predictions are in the raw bundle. [Final verification](outputs/final_scan_analysis/verification.json) covers 840 runs, 3,180 checkpoints, 15,811,480 re-scored rows, 592 interval rows and 30 RF evaluations. No manuscript or new MLP training was introduced.
+
+Install `requirements-final-scan.txt` in an isolated environment. The scan diagnostic needs the matching local prepared inputs from the original study; they are excluded from publication. The RF protocol records its source/input hashes, six calibration trials and selected settings before evaluation. Read existing completed evidence first. Any intentional fresh rerun should use a separate output directory/workspace so the frozen evidence remains intact.
+
+
 The 7 October follow-up is complete: class-balanced replay, joint confusion diagnostics, a 60/120/300 memory sweep, paired EWC/A-GEM comparisons, every attack order, and an excluded-dataset reply. **84 new calibration trials and 420 new evaluations**, alongside the original 420 evaluations. Original evidence is preserved.
 
 Read the [follow-up supervisor summary](outputs/replay_followup_report/SUPERVISOR_FOLLOWUP_SUMMARY.md), [full tables](outputs/replay_followup_report/FOLLOWUP_RESULTS.md), [joint confusion report](outputs/joint_diagnostics/JOINT_CONFUSION_REPORT.md), [follow-up protocol](docs/research/Replay_Followup_Protocol_2026_10_12.md), [dataset reply](docs/research/Excluded_Datasets_Reply_2026_10_12.md), and [deliverables index](DELIVERABLES_INDEX_2026_10_12.md). The [original results](outputs/multiclass_full_comparison/FULL_COMPARISON_RESULTS.md) remain available.

@@ -1,0 +1,16 @@
+{
+  "classes": [
+    "Slowloris_Scan",
+    "ICMP_Fragmentation"
+  ],
+  "evaluation_support": {
+    "Slowloris_Scan": 600,
+    "ICMP_Fragmentation": 5
+  },
+  "within_run": "(correct Slowloris + correct ICMP fragmentation)/605; not an equal-class mean",
+  "across_runs": "average three orders within seed, then mean and sample SD over ten training seeds",
+  "no_replay_federated": "both types correct in order_2 where rare task is last; both forgotten in orders1/3; (0+1+0)/3 = 1/3",
+  "ewc_correction": "not exactly 33.33 \u00b1 0.00 in saved evidence; finite fragmentation errors in last-rare order",
+  "neither_class_always_correct_across_orders": true,
+  "reconstruction_matches_saved_metrics": true
+}

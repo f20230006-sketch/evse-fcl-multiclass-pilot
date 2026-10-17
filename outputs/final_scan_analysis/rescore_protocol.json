@@ -1,0 +1,31 @@
+{
+  "source": "existing saved probabilities only",
+  "scan_types": [
+    "Aggressive_Scan",
+    "OS_Fingerprinting",
+    "SYN_Stealth_Scan",
+    "Service_Version_Detection",
+    "TCP_Port_Scan",
+    "Vulnerability_Scan"
+  ],
+  "output_classes": [
+    "Benign",
+    "ICMP_Flood",
+    "ICMP_Fragmentation",
+    "PSHACK_Flood",
+    "SYN_Flood",
+    "Scan",
+    "Slowloris_Scan",
+    "SynonymousIP_Flood",
+    "TCP_Flood",
+    "UDP_Flood"
+  ],
+  "rule": "sum the six probabilities, then argmax in the 10-class space",
+  "retention_definition": "original old-task cohorts, scored in merged label space; Scan spans reconnaissance and vulnerability cohorts",
+  "no_retraining": true,
+  "no_changes_to_original_task_order": true,
+  "source_hashes": {
+    "src/evse_ids/scan_final.py": "9787964112cda529564596b036671d2ae40b22a72274cd9d4735cb6a7b388ea1",
+    "scripts/analyze_final_scans.py": "5d76ce096f6a9e41368bb3f43fdad16eb4856bac8629de3a3cbc31e5efebe426"
+  }
+}
