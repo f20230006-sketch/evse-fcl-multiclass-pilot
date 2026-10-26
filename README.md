@@ -1,5 +1,16 @@
 # EVSE multiclass federated continual learning
 
+## Frozen final replay experiment — 26 October 2026
+
+The final balanced-plus-rare-quota method is complete at memory 60 and 300 per client: 48 calibration fits followed by 120 evaluations, ten seeds, three orders, federated and centralized. Read [SUMMARY.pdf](outputs/balanced_rare_report/SUMMARY.pdf) (two pages), [SUMMARY.md](outputs/balanced_rare_report/SUMMARY.md) and [INFO.md](outputs/balanced_rare_report/INFO.md) before older reports. Merged-Scan scoring is primary and the rare metric is now Slowloris recall alone. Exact-type results are sensitivity checks, including any differences in conclusions. No inference is made from five fragmentation examples.
+
+The [frozen design](docs/research/Balanced_Rare_Frozen_Design_2026_10_26.md) reserves a feasible 10% or 20% rare share, then fills remaining slots using the existing class-balanced allocator, including benign as an ordinary class. Replay fractions are 0.25/0.50. Choices use the unchanged original-type calibration criterion, not evaluation outcomes. No post-evaluation adjustment or extra experiment was performed. Statistical non-significance does not establish non-inferiority. Both environments and every memory/order result, including losses, are retained.
+
+Code, configs, all calibration records, memory partitions and final weights are here; checkpoint probabilities are provided in the separate raw-results bundle. Clean review/raw bundles contain no email drafts or implementation files. Verification checks every new model, checkpoint, role, quota, merged decision and paired comparison. Results are frozen for review before writing; no manuscript is included.
+
+Reproduce only intentionally in a separate output workspace, retaining original prepared inputs. Run `scripts/run_balanced_rare_final.py`, `scripts/verify_balanced_rare_final.py`, `scripts/analyze_balanced_rare_final.py`, then `scripts/verify_balanced_rare_report.py`. Read the recorded protocols and existing evidence first. The frozen source/input hashes prevent silently resuming changed experiments.
+
+
 ## Final checks — 17 October 2026
 
 Read the [two-page summary](outputs/final_scan_analysis/SUMMARY.pdf) or [Markdown summary](outputs/final_scan_analysis/SUMMARY.md), then [INFO.md](outputs/final_scan_analysis/INFO.md) for all merged/rare/client tables. The scan-only Random Forest achieves 34.25% versus 16.67% chance, so intrinsic indistinguishability of all six scans is not established. All 840 saved MLP runs were re-scored without retraining. Separate Slowloris/fragmentation recalls and paired federation interactions are included; the memory-60 protection-over-uniform interaction is not significant. The supported Slowloris interaction at memory 300 is exploratory and unadjusted for multiplicity.
@@ -13,7 +24,7 @@ Install `requirements-final-scan.txt` in an isolated environment. The scan diagn
 
 The 7 October follow-up is complete: class-balanced replay, joint confusion diagnostics, a 60/120/300 memory sweep, paired EWC/A-GEM comparisons, every attack order, and an excluded-dataset reply. **84 new calibration trials and 420 new evaluations**, alongside the original 420 evaluations. Original evidence is preserved.
 
-Read the [follow-up supervisor summary](outputs/replay_followup_report/SUPERVISOR_FOLLOWUP_SUMMARY.md), [full tables](outputs/replay_followup_report/FOLLOWUP_RESULTS.md), [joint confusion report](outputs/joint_diagnostics/JOINT_CONFUSION_REPORT.md), [follow-up protocol](docs/research/Replay_Followup_Protocol_2026_10_12.md), [dataset reply](docs/research/Excluded_Datasets_Reply_2026_10_12.md), and [deliverables index](DELIVERABLES_INDEX_2026_10_12.md). The [original results](outputs/multiclass_full_comparison/FULL_COMPARISON_RESULTS.md) remain available.
+Read the [follow-up results summary](outputs/replay_followup_report/SUPERVISOR_FOLLOWUP_SUMMARY.md), [full tables](outputs/replay_followup_report/FOLLOWUP_RESULTS.md), [joint confusion report](outputs/joint_diagnostics/JOINT_CONFUSION_REPORT.md), [follow-up protocol](docs/research/Replay_Followup_Protocol_2026_10_12.md), [dataset reply](docs/research/Excluded_Datasets_Reply_2026_10_12.md), and [deliverables index](DELIVERABLES_INDEX_2026_10_12.md). The [original results](outputs/multiclass_full_comparison/FULL_COMPARISON_RESULTS.md) remain available.
 
 At memory 60, class-balanced replay exceeds protected replay on old-type retention; protected replay has higher rare-type recall. Benefits depend on metric, capacity and attack order. Do not claim uniform dominance or intrinsic type indistinguishability. Only 16 benign evaluation flows are available, and benign-starved FPR is undefined. Seeds vary training randomness on one fixed split. Joint is an empirical offline reference.
 

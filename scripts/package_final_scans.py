@@ -8,11 +8,11 @@ ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'outputs/final_scan_analysis'
 ALLOWED={'.md','.pdf','.csv','.json','.npz'}
 
-README='''# Final supervisor checks — 17 October 2026
+README='''# Final checks — 17 October 2026
 
 Start with **SUMMARY.pdf** (exactly two pages), then **INFO.md** for details. The archive contains results/data/Markdown information only; email drafts and implementation files stay outside it.
 
-Completed: a pooled six-scan Random Forest diagnostic (6 calibration fits, 30 evaluation fits), merged-Scan re-scoring of all 840 existing runs without MLP retraining, individual rare-class and focused-client results, and reconstruction of the 33.33% metric. The Random Forest achieves 34.25% against 16.67% chance, so intrinsic indistinguishability of all six scans is not established. Merged scores are an alternative reporting view pending supervisor review.
+Completed: a pooled six-scan Random Forest diagnostic (6 calibration fits, 30 evaluation fits), merged-Scan re-scoring of all 840 existing runs without MLP retraining, individual rare-class and focused-client results, and reconstruction of the 33.33% metric. The Random Forest achieves 34.25% against 16.67% chance, so intrinsic indistinguishability of all six scans is not established. Merged scores are an alternative reporting view pending review.
 
 The small review bundle contains the summary, information, aggregate CSVs/protocols and verification. The full raw-results bundle additionally contains every per-run merged result and compact checkpoint prediction, plus Random Forest predictions and role indices. Original MLP probability files, input data and prepared feature tensors are not duplicated; their original paths and digests are in saved_prediction_input_hashes.json. They remain in the earlier full evidence package/workspace.
 

@@ -1,4 +1,4 @@
-# Final checks: short supervisor summary
+# Final checks: short results summary
 
 17 October 2026 | All table values are percentages; comparisons are percentage points.
 
@@ -58,7 +58,7 @@ Original type-level rare recall (federated / centralized), memory 60 for replay:
 - The original rare metric is (correct Slowloris + correct ICMP fragmentation) / 605. Federated no replay is 0%, 100%, 0% across orders, averaging 33.33%. Both types are correct only when rare attacks come last; neither is always correct across orders. EWC is 33.31% ± 0.03%, not exactly 33.33% ± 0.00%.
 - Merged scores retain original old-task cohorts and type-level replay policies. Coarsening changes task overlap; it is not evidence that forgetting was fixed. Intervals describe training randomness on one split, not new independent captures.
 
-## 6. Questions for the supervisor
+## 6. Questions for review
 
 - Given the above-chance Random Forest result, should exact attack types remain primary and merged-Scan scores be a sensitivity analysis?
 - Should the letter emphasize the retention/rare-recall trade-off, with the Slowloris federation interaction labeled exploratory? No further experiments are proposed.

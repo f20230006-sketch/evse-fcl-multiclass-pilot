@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.2.3 - 2026-10-26
+
+Complete the frozen balanced-plus-rare-quota experiment at memories 60/300, with calibration-only selection, merged-Scan primary scores, Slowloris recall, all-order paired comparisons and independent verification. Add clean review/raw bundles and a two-page results summary. Preserve previous numerical evidence; remove audience-role wording from the latest documents.
+
 ## 0.2.2 - 2026-10-17
 
-Complete final scan/rare-client checks: calibration-only Random Forest diagnostic, six-scan probability re-scoring, rare-type federation interactions, client tables, and the rare-recall reconstruction. Add a visually verified two-page supervisor summary and separate clean review/raw-results bundles.
+Complete final scan/rare-client checks: calibration-only Random Forest diagnostic, six-scan probability re-scoring, rare-type federation interactions, client tables, and the rare-recall reconstruction. Add a visually verified two-page results summary and separate clean review/raw-results bundles.
 
 ## 0.2.1 - 2026-10-12
 
