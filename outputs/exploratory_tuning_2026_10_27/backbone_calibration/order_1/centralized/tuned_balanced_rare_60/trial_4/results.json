@@ -1,0 +1,522 @@
+{
+  "environment": "centralized",
+  "method": "tuned_balanced_rare_60",
+  "seed": 42,
+  "settings": {
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "dropout": 0.1,
+    "weight_decay": 0.001,
+    "local_epochs": 5,
+    "learning_rate": 0.001,
+    "replay_fraction": 0.5,
+    "rare_quota_fraction": 0.1
+  },
+  "calibration_only": true,
+  "history": [
+    {
+      "checkpoint": 1,
+      "learned_task": "reconnaissance",
+      "seen_classes": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        12
+      ],
+      "calibration": {
+        "rows": 2263,
+        "benign_support": 13,
+        "attack_support": 2250,
+        "accuracy": 0.2903225806451613,
+        "attack_accuracy": 0.2862222222222222,
+        "macro_recall": 0.40518518518518515,
+        "rare_attack_support": 0,
+        "rare_attack_recall": null,
+        "false_alarm_rate": 0.0,
+        "auroc_macro_ovr": 0.6597870319298891,
+        "auprc_macro_ovr_average_precision": 0.39007751652582073,
+        "ranking_classes_with_both_positive_and_negative_support": 6,
+        "binary_attack_auroc": 1.0,
+        "binary_attack_auprc_average_precision": 1.0,
+        "per_class": [
+          {
+            "class": "Benign",
+            "support": 13,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "Aggressive_Scan",
+            "support": 450,
+            "recall": 0.20444444444444446,
+            "auroc": 0.6149279892137035,
+            "auprc_average_precision": 0.32234729881757757
+          },
+          {
+            "class": "OS_Fingerprinting",
+            "support": 450,
+            "recall": 0.5644444444444444,
+            "auroc": 0.6190684562113133,
+            "auprc_average_precision": 0.2656129020161804
+          },
+          {
+            "class": "SYN_Stealth_Scan",
+            "support": 450,
+            "recall": 0.4,
+            "auroc": 0.6230226144511859,
+            "auprc_average_precision": 0.2856020884512078
+          },
+          {
+            "class": "Service_Version_Detection",
+            "support": 450,
+            "recall": 0.26222222222222225,
+            "auroc": 0.5460795489366919,
+            "auprc_average_precision": 0.2215507379758035
+          },
+          {
+            "class": "TCP_Port_Scan",
+            "support": 450,
+            "recall": 0.0,
+            "auroc": 0.55562358276644,
+            "auprc_average_precision": 0.2453520718941553
+          }
+        ],
+        "rare_attack_macro_recall": null
+      },
+      "calibration_primary": {
+        "old_task_accuracy": 1.0,
+        "slowloris_recall": null,
+        "worst_client_macro_recall": 1.0,
+        "objective": 1.0
+      }
+    },
+    {
+      "checkpoint": 2,
+      "learned_task": "flooding",
+      "seen_classes": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13
+      ],
+      "calibration": {
+        "rows": 4523,
+        "benign_support": 13,
+        "attack_support": 4510,
+        "accuracy": 0.6172894096838382,
+        "attack_accuracy": 0.6161862527716186,
+        "macro_recall": 0.655,
+        "rare_attack_support": 0,
+        "rare_attack_recall": null,
+        "false_alarm_rate": 0.0,
+        "auroc_macro_ovr": 0.9160841037266406,
+        "auprc_macro_ovr_average_precision": 0.6635027162066612,
+        "ranking_classes_with_both_positive_and_negative_support": 12,
+        "binary_attack_auroc": 0.9999829438853829,
+        "binary_attack_auprc_average_precision": 0.9999999508469319,
+        "per_class": [
+          {
+            "class": "Benign",
+            "support": 13,
+            "recall": 1.0,
+            "auroc": 0.9999829438853829,
+            "auprc_average_precision": 0.9945054945054945
+          },
+          {
+            "class": "Aggressive_Scan",
+            "support": 450,
+            "recall": 0.34,
+            "auroc": 0.8033581580598522,
+            "auprc_average_precision": 0.25445491405540027
+          },
+          {
+            "class": "ICMP_Flood",
+            "support": 10,
+            "recall": 0.7,
+            "auroc": 0.972124972302238,
+            "auprc_average_precision": 0.7879078313761934
+          },
+          {
+            "class": "OS_Fingerprinting",
+            "support": 450,
+            "recall": 0.3022222222222222,
+            "auroc": 0.8220208964181466,
+            "auprc_average_precision": 0.25413508932301454
+          },
+          {
+            "class": "PSHACK_Flood",
+            "support": 450,
+            "recall": 0.9977777777777778,
+            "auroc": 0.9986119977084869,
+            "auprc_average_precision": 0.9981117791137831
+          },
+          {
+            "class": "SYN_Flood",
+            "support": 450,
+            "recall": 0.9844444444444445,
+            "auroc": 0.9998979731019996,
+            "auprc_average_precision": 0.999198844384209
+          },
+          {
+            "class": "SYN_Stealth_Scan",
+            "support": 450,
+            "recall": 0.2866666666666667,
+            "auroc": 0.8134648225441252,
+            "auprc_average_precision": 0.2355565837779292
+          },
+          {
+            "class": "Service_Version_Detection",
+            "support": 450,
+            "recall": 0.04888888888888889,
+            "auroc": 0.7955511907684752,
+            "auprc_average_precision": 0.21857609956864288
+          },
+          {
+            "class": "SynonymousIP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 0.9999345281937966,
+            "auprc_average_precision": 0.9993701288358059
+          },
+          {
+            "class": "TCP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "TCP_Port_Scan",
+            "support": 450,
+            "recall": 0.2,
+            "auroc": 0.7880617617371852,
+            "auprc_average_precision": 0.22021582953946234
+          },
+          {
+            "class": "UDP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          }
+        ],
+        "rare_attack_macro_recall": null
+      },
+      "calibration_primary": {
+        "old_task_accuracy": 0.9968888888888889,
+        "slowloris_recall": null,
+        "worst_client_macro_recall": 0.9330555555555555,
+        "objective": 0.9649722222222222
+      }
+    },
+    {
+      "checkpoint": 3,
+      "learned_task": "low_rate_rare",
+      "seen_classes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "calibration": {
+        "rows": 4976,
+        "benign_support": 13,
+        "attack_support": 4963,
+        "accuracy": 0.6266077170418006,
+        "attack_accuracy": 0.6256296594801531,
+        "macro_recall": 0.6449996464807155,
+        "rare_attack_support": 453,
+        "rare_attack_recall": 0.9911699779249448,
+        "false_alarm_rate": 0.0,
+        "auroc_macro_ovr": 0.9303286029200363,
+        "auprc_macro_ovr_average_precision": 0.6564236267973544,
+        "ranking_classes_with_both_positive_and_negative_support": 14,
+        "binary_attack_auroc": 1.0,
+        "binary_attack_auprc_average_precision": 1.0,
+        "per_class": [
+          {
+            "class": "Benign",
+            "support": 13,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "Aggressive_Scan",
+            "support": 450,
+            "recall": 0.19777777777777777,
+            "auroc": 0.7993872440712918,
+            "auprc_average_precision": 0.22416634375897818
+          },
+          {
+            "class": "ICMP_Flood",
+            "support": 10,
+            "recall": 0.9,
+            "auroc": 0.9997784937575513,
+            "auprc_average_precision": 0.9476190476190476
+          },
+          {
+            "class": "ICMP_Fragmentation",
+            "support": 4,
+            "recall": 0.25,
+            "auroc": 0.998592115848753,
+            "auprc_average_precision": 0.2625
+          },
+          {
+            "class": "OS_Fingerprinting",
+            "support": 450,
+            "recall": 0.22666666666666666,
+            "auroc": 0.8225506947513134,
+            "auprc_average_precision": 0.2319798101505151
+          },
+          {
+            "class": "PSHACK_Flood",
+            "support": 450,
+            "recall": 0.9977777777777778,
+            "auroc": 0.999091176903815,
+            "auprc_average_precision": 0.9982123714327104
+          },
+          {
+            "class": "SYN_Flood",
+            "support": 450,
+            "recall": 0.9822222222222222,
+            "auroc": 0.9994594196494329,
+            "auprc_average_precision": 0.9967101659833221
+          },
+          {
+            "class": "SYN_Stealth_Scan",
+            "support": 450,
+            "recall": 0.4022222222222222,
+            "auroc": 0.8166440811116021,
+            "auprc_average_precision": 0.22338641652819272
+          },
+          {
+            "class": "Service_Version_Detection",
+            "support": 450,
+            "recall": 0.04888888888888889,
+            "auroc": 0.7939274316295969,
+            "auprc_average_precision": 0.1972113827522924
+          },
+          {
+            "class": "Slowloris_Scan",
+            "support": 449,
+            "recall": 0.9977728285077951,
+            "auroc": 0.9885448506683236,
+            "auprc_average_precision": 0.9034992700648791
+          },
+          {
+            "class": "SynonymousIP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 0.9994216133942161,
+            "auprc_average_precision": 0.9896129422003183
+          },
+          {
+            "class": "TCP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "TCP_Port_Scan",
+            "support": 450,
+            "recall": 0.028888888888888888,
+            "auroc": 0.8072052830559239,
+            "auprc_average_precision": 0.2150526037231228
+          },
+          {
+            "class": "UDP_Flood",
+            "support": 450,
+            "recall": 0.9977777777777778,
+            "auroc": 0.99999803603869,
+            "auprc_average_precision": 0.999980420949584
+          }
+        ],
+        "rare_attack_macro_recall": 0.6238864142538976
+      },
+      "calibration_primary": {
+        "old_task_accuracy": 0.907566371681416,
+        "slowloris_recall": 0.9977728285077951,
+        "worst_client_macro_recall": 0.8597530864197531,
+        "objective": 0.9216974288696548
+      }
+    },
+    {
+      "checkpoint": 4,
+      "learned_task": "post_rare_vulnerability",
+      "seen_classes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "calibration": {
+        "rows": 5425,
+        "benign_support": 13,
+        "attack_support": 5412,
+        "accuracy": 0.5609216589861751,
+        "attack_accuracy": 0.5598669623059866,
+        "macro_recall": 0.6405523385300669,
+        "rare_attack_support": 453,
+        "rare_attack_recall": 0.7350993377483444,
+        "false_alarm_rate": 0.0,
+        "auroc_macro_ovr": 0.9075782420041695,
+        "auprc_macro_ovr_average_precision": 0.6121403239845138,
+        "ranking_classes_with_both_positive_and_negative_support": 15,
+        "binary_attack_auroc": 1.0,
+        "binary_attack_auprc_average_precision": 1.0,
+        "per_class": [
+          {
+            "class": "Benign",
+            "support": 13,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "Aggressive_Scan",
+            "support": 450,
+            "recall": 0.0,
+            "auroc": 0.7664151870463429,
+            "auprc_average_precision": 0.18220947834350673
+          },
+          {
+            "class": "ICMP_Flood",
+            "support": 10,
+            "recall": 0.9,
+            "auroc": 0.9999261311172669,
+            "auprc_average_precision": 0.966923076923077
+          },
+          {
+            "class": "ICMP_Fragmentation",
+            "support": 4,
+            "recall": 1.0,
+            "auroc": 0.9990315439955728,
+            "auprc_average_precision": 0.3047619047619048
+          },
+          {
+            "class": "OS_Fingerprinting",
+            "support": 450,
+            "recall": 0.0022222222222222222,
+            "auroc": 0.7931417085427136,
+            "auprc_average_precision": 0.17594758013978126
+          },
+          {
+            "class": "PSHACK_Flood",
+            "support": 450,
+            "recall": 0.9977777777777778,
+            "auroc": 0.9995461753210497,
+            "auprc_average_precision": 0.9984599060178869
+          },
+          {
+            "class": "SYN_Flood",
+            "support": 450,
+            "recall": 0.9822222222222222,
+            "auroc": 0.9993634840871022,
+            "auprc_average_precision": 0.9953536872456928
+          },
+          {
+            "class": "SYN_Stealth_Scan",
+            "support": 450,
+            "recall": 0.0,
+            "auroc": 0.7964154103852596,
+            "auprc_average_precision": 0.18458799612429974
+          },
+          {
+            "class": "Service_Version_Detection",
+            "support": 450,
+            "recall": 0.0,
+            "auroc": 0.7495289782244556,
+            "auprc_average_precision": 0.15705867239826143
+          },
+          {
+            "class": "Slowloris_Scan",
+            "support": 449,
+            "recall": 0.732739420935412,
+            "auroc": 0.9813635517298176,
+            "auprc_average_precision": 0.8933294250707084
+          },
+          {
+            "class": "SynonymousIP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 0.9993469570072585,
+            "auprc_average_precision": 0.9886826883030162
+          },
+          {
+            "class": "TCP_Flood",
+            "support": 450,
+            "recall": 1.0,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "TCP_Port_Scan",
+            "support": 450,
+            "recall": 0.0,
+            "auroc": 0.7634228922389725,
+            "auprc_average_precision": 0.1670767979475143
+          },
+          {
+            "class": "UDP_Flood",
+            "support": 450,
+            "recall": 0.9977777777777778,
+            "auroc": 1.0,
+            "auprc_average_precision": 1.0
+          },
+          {
+            "class": "Vulnerability_Scan",
+            "support": 449,
+            "recall": 0.9955456570155902,
+            "auroc": 0.7661716103667313,
+            "auprc_average_precision": 0.16771364649205722
+          }
+        ],
+        "rare_attack_macro_recall": 0.866369710467706
+      },
+      "calibration_primary": {
+        "old_task_accuracy": 0.9038845715550866,
+        "slowloris_recall": 0.7193763919821826,
+        "worst_client_macro_recall": 0.9447829476691955,
+        "objective": 0.8560146370688216
+      }
+    }
+  ],
+  "selection_score": 0.8560146370688216,
+  "elapsed_seconds": 7.5
+}

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4 - 2026-10-27
+
+Add isolated exploratory model/replay tuning with matched baselines, calibration-only choices, all-order reporting and saved evidence. Preserve the frozen study and disclose the changed selection criterion and already-observed evaluation set.
+
 ## 0.2.3 - 2026-10-26
 
 Complete the frozen balanced-plus-rare-quota experiment at memories 60/300, with calibration-only selection, merged-Scan primary scores, Slowloris recall, all-order paired comparisons and independent verification. Add clean review/raw bundles and a two-page results summary. Preserve previous numerical evidence; remove audience-role wording from the latest documents.

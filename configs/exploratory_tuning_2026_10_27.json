@@ -1,0 +1,152 @@
+{
+  "experiment": "exploratory_tuning_2026_10_27",
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "split_seed": 42,
+  "calibration_seed": 42,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "orders": {
+    "order_1": [
+      "reconnaissance",
+      "flooding",
+      "low_rate_rare",
+      "post_rare_vulnerability"
+    ],
+    "order_2": [
+      "flooding",
+      "reconnaissance",
+      "post_rare_vulnerability",
+      "low_rate_rare"
+    ],
+    "order_3": [
+      "low_rate_rare",
+      "post_rare_vulnerability",
+      "flooding",
+      "reconnaissance"
+    ]
+  },
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "protected_minimum_fraction": 0.2,
+  "fisher_max_examples_per_client_task": 128,
+  "workers": 3,
+  "torch_threads_per_worker": 1,
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "methods": [
+    "tuned_class_balanced_60",
+    "tuned_protected_60",
+    "tuned_balanced_rare_60"
+  ],
+  "output_dir": "outputs/exploratory_tuning_2026_10_27",
+  "allow_insufficient_benign": true,
+  "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets.",
+  "reference_output": "outputs/multiclass_full_comparison",
+  "centralized_budget_rule": "five times per-client budget",
+  "class_balance_rule": "Reserve floor(capacity * rare_quota_fraction) feasible rare-group slots using existing balanced allocator within rare types; fill remaining slots with existing balanced allocator over unreserved candidates including rare and benign; shortage redistribution; no duplicates; previous buffer plus current fitting only.",
+  "selection_criterion": "Mean of final-checkpoint merged old-task calibration accuracy, Slowloris calibration recall and worst-client calibration macro recall. Stage A selects one common backbone averaged equally across three allocators, three orders and two environments; Stage B selects memory settings per allocator/order/environment. No evaluation selection.",
+  "capacity": 60,
+  "backbone_candidates": [
+    {
+      "hidden_sizes": [
+        64,
+        32
+      ],
+      "dropout": 0.0,
+      "weight_decay": 0.0001,
+      "local_epochs": 5,
+      "learning_rate": 0.003
+    },
+    {
+      "hidden_sizes": [
+        64,
+        32
+      ],
+      "dropout": 0.0,
+      "weight_decay": 0.0001,
+      "local_epochs": 5,
+      "learning_rate": 0.001
+    },
+    {
+      "hidden_sizes": [
+        64,
+        32
+      ],
+      "dropout": 0.0,
+      "weight_decay": 0.0001,
+      "local_epochs": 5,
+      "learning_rate": 0.0005
+    },
+    {
+      "hidden_sizes": [
+        128,
+        64
+      ],
+      "dropout": 0.0,
+      "weight_decay": 0.0001,
+      "local_epochs": 5,
+      "learning_rate": 0.001
+    },
+    {
+      "hidden_sizes": [
+        64,
+        32
+      ],
+      "dropout": 0.1,
+      "weight_decay": 0.001,
+      "local_epochs": 5,
+      "learning_rate": 0.001
+    },
+    {
+      "hidden_sizes": [
+        128,
+        64
+      ],
+      "dropout": 0.1,
+      "weight_decay": 0.001,
+      "local_epochs": 3,
+      "learning_rate": 0.001
+    }
+  ],
+  "replay_fractions": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "rare_fractions": [
+    0.1,
+    0.2
+  ],
+  "exploratory_status": "Authorized follow-up after evaluation results were already examined; not a new untouched confirmatory test."
+}

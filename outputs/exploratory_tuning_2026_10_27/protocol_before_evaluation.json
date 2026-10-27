@@ -1,0 +1,186 @@
+{
+  "config": {
+    "experiment": "exploratory_tuning_2026_10_27",
+    "data": "data/official/network_traffic",
+    "label_column": "Label",
+    "max_rows_per_attack": 3000,
+    "sampling_seed": 42,
+    "split_seed": 42,
+    "calibration_seed": 42,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "orders": {
+      "order_1": [
+        "reconnaissance",
+        "flooding",
+        "low_rate_rare",
+        "post_rare_vulnerability"
+      ],
+      "order_2": [
+        "flooding",
+        "reconnaissance",
+        "post_rare_vulnerability",
+        "low_rate_rare"
+      ],
+      "order_3": [
+        "low_rate_rare",
+        "post_rare_vulnerability",
+        "flooding",
+        "reconnaissance"
+      ]
+    },
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "optimizer": "Adam",
+    "local_epochs": 5,
+    "rounds_per_task": 5,
+    "batch_size": 128,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": null,
+    "numeric_z_clip": 5.0,
+    "role_fractions": [
+      0.65,
+      0.15,
+      0.2
+    ],
+    "federated_memory_per_client": 60,
+    "centralized_memory_total": 300,
+    "protected_minimum_fraction": 0.2,
+    "fisher_max_examples_per_client_task": 128,
+    "workers": 3,
+    "torch_threads_per_worker": 1,
+    "environments": [
+      "federated",
+      "centralized"
+    ],
+    "methods": [
+      "tuned_class_balanced_60",
+      "tuned_protected_60",
+      "tuned_balanced_rare_60"
+    ],
+    "output_dir": "outputs/exploratory_tuning_2026_10_27",
+    "allow_insufficient_benign": true,
+    "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets.",
+    "reference_output": "outputs/multiclass_full_comparison",
+    "centralized_budget_rule": "five times per-client budget",
+    "class_balance_rule": "Reserve floor(capacity * rare_quota_fraction) feasible rare-group slots using existing balanced allocator within rare types; fill remaining slots with existing balanced allocator over unreserved candidates including rare and benign; shortage redistribution; no duplicates; previous buffer plus current fitting only.",
+    "selection_criterion": "Mean of final-checkpoint merged old-task calibration accuracy, Slowloris calibration recall and worst-client calibration macro recall. Stage A selects one common backbone averaged equally across three allocators, three orders and two environments; Stage B selects memory settings per allocator/order/environment. No evaluation selection.",
+    "capacity": 60,
+    "backbone_candidates": [
+      {
+        "hidden_sizes": [
+          64,
+          32
+        ],
+        "dropout": 0.0,
+        "weight_decay": 0.0001,
+        "local_epochs": 5,
+        "learning_rate": 0.003
+      },
+      {
+        "hidden_sizes": [
+          64,
+          32
+        ],
+        "dropout": 0.0,
+        "weight_decay": 0.0001,
+        "local_epochs": 5,
+        "learning_rate": 0.001
+      },
+      {
+        "hidden_sizes": [
+          64,
+          32
+        ],
+        "dropout": 0.0,
+        "weight_decay": 0.0001,
+        "local_epochs": 5,
+        "learning_rate": 0.0005
+      },
+      {
+        "hidden_sizes": [
+          128,
+          64
+        ],
+        "dropout": 0.0,
+        "weight_decay": 0.0001,
+        "local_epochs": 5,
+        "learning_rate": 0.001
+      },
+      {
+        "hidden_sizes": [
+          64,
+          32
+        ],
+        "dropout": 0.1,
+        "weight_decay": 0.001,
+        "local_epochs": 5,
+        "learning_rate": 0.001
+      },
+      {
+        "hidden_sizes": [
+          128,
+          64
+        ],
+        "dropout": 0.1,
+        "weight_decay": 0.001,
+        "local_epochs": 3,
+        "learning_rate": 0.001
+      }
+    ],
+    "replay_fractions": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "rare_fractions": [
+      0.1,
+      0.2
+    ],
+    "exploratory_status": "Authorized follow-up after evaluation results were already examined; not a new untouched confirmatory test."
+  },
+  "source_hashes": {
+    "src/evse_ids/exploratory_tuning.py": "032d465006547abe4a860930d940b5ff13852e517bafcb0a503c72769b1cb1c7",
+    "scripts/run_exploratory_tuning.py": "5397e40abf48781437687da41a16e781c3fb85d923e41ae6aa0c1318a7b04d6a",
+    "configs/exploratory_tuning_2026_10_27.json": "61c70cbd2c4b82ff1a389ba15f138613befb6c14a6f9252d3ed49255175c3808",
+    "docs/research/Exploratory_Tuning_Design_2026_10_27.md": "f68c247a3bfc21e61a8126af9325fa1023807219927530e3d7604b31b1dfa61d",
+    "src/evse_ids/balanced_rare.py": "d3790f6c688fa316fb408fd5edead5cf16e4c96987a5901540a3cf8d116bedb8",
+    "src/evse_ids/balanced_rare_allocator.py": "f895e7355e428b6dc764878965c18c1852df3909fde88d7bf440e7619f7885ff",
+    "src/evse_ids/replay_followup.py": "5e12b201d52de84f292e1431a7482a2a45e7de6a3ef17efbc3df14dab60b99d5",
+    "scripts/run_balanced_rare_final.py": "d61038f9000997a4e8806cbfa4c4385247bd7bde0d6d1faa3658c11a9e62ad9c",
+    "docs/research/Balanced_Rare_Frozen_Design_2026_10_26.md": "1c8459c2e7dfaf3445caef20f4d2a48509a1dd829e5f499767554941f00b66b9",
+    "configs/balanced_rare_final.json": "a1bfa3dc3c3666117d90b8ddc7b13c4fc12d09f97f73bb03484eec61fbcd85f0",
+    "src/evse_ids/full_comparison.py": "368f3191e9f88f103a542cf6695ee21c3f8bcb3b9461bc33170d2373db5ed79e",
+    "src/evse_ids/multiclass_pilot.py": "53d564a043e67d3e52205ad5d884eea2396990212edd23cd34d012bc848821e2",
+    "src/evse_ids/continual_ablation.py": "d4f230ab7a712daeaefb7aa875d17d884774d90df7319c4dcf2cba30ba87e08d",
+    "src/evse_ids/continual_stable.py": "4a3d8d61175798657d7a40ae65f5bfce0a96de1d5746d33e38efe12cdc46e886",
+    "src/evse_ids/data.py": "51599b619e5aecc2a15672b02850403d2d4038e6590c222127dfc96000d581a5",
+    "src/evse_ids/validation.py": "c0f11021ffbc1ec9161452676540b6b39f1b446d38256c0fafe8f014c069b35f",
+    "scripts/run_full_multiclass_comparison.py": "ea853263357f3167c9f4199a20ab64d58f198ebaaba495b6ab0ff644e31a945d",
+    "configs/multiclass_full_comparison.json": "40525d06440ee5591dd23cd97d927ecbd2f7965ca0bb0ac7ccd06d5cb0322e7f"
+  },
+  "reference_inputs": {
+    "outputs\\multiclass_full_comparison\\splits\\order_1\\prepared_local_only.pt": "2f1131533c9cd48a341b51d4e2453e9d7a6c232dfc5e11dbad670d223aa480d1",
+    "outputs\\multiclass_full_comparison\\splits\\order_2\\prepared_local_only.pt": "de4f32f3edf6233f7fc475dbeaf42a17bebd91c5706b808c7bbeea68a6b15736",
+    "outputs\\multiclass_full_comparison\\splits\\order_3\\prepared_local_only.pt": "7a2bdd9137ccb5e96be9b8ca5aa994f272fcda8c4631e3e186fcd06799191436",
+    "outputs\\multiclass_full_comparison\\splits\\order_1\\split_manifest.csv": "d743614bb3feed23aac49226dcaf8dcc86d51a44f1c7ca98a33be0bd13f4c31f",
+    "outputs\\multiclass_full_comparison\\splits\\order_2\\split_manifest.csv": "7a48edf708239c3e9e1f5f04ca052f0b0447cb33696bf42d1a20a8553c972598",
+    "outputs\\multiclass_full_comparison\\splits\\order_3\\split_manifest.csv": "e50acacfd940f1bc24cc5b63342fdeb8eea3e196da2c2fa3db7faebd5e1cb2fc"
+  },
+  "exploratory": true,
+  "fingerprint": "1e5f6d6f357ac916a625ab728fed598a39455ee21234a5b7ff0c74884ed9ac2c",
+  "python": "3.12.14",
+  "torch": "2.8.0+cu129"
+}

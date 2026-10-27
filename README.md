@@ -1,5 +1,14 @@
 # EVSE multiclass federated continual learning
 
+## Exploratory model tuning — 27 October 2026
+
+A separately authorized follow-up tests six common model configurations, then replay fractions 0.25/0.50/0.75 and rare shares 0.10/0.20. Class-balanced, protected and balanced+rare share the calibration-selected backbone; 180 calibration fits finish before 180 evaluations across both environments, all orders and ten seeds, memory 60/client. Read [SUMMARY.pdf](outputs/exploratory_tuning_report_2026_10_27/SUMMARY.pdf), [complete results](outputs/exploratory_tuning_report_2026_10_27/INFO.md) and the [design](docs/research/Exploratory_Tuning_Design_2026_10_27.md).
+
+This is exploratory: the earlier evaluation outcomes were already known. The calibration objective changes to the equal-weight final-checkpoint mean of merged old accuracy, Slowloris recall and worst-client macro recall. Frozen-to-tuned gains are overall pipeline differences; matched-backbone controls address conditional allocator differences. All losses and calibration candidates remain visible. Original data roles, task cohorts, 15-type training, memory capacity, earlier numerical evidence and the previously sent manuscript are preserved. No untouched-test confirmation, universal superiority or novelty claim follows from this follow-up alone.
+
+Verification covers all new models, predictions, buffer policies, frozen digests and selection timing. An initial Windows output-directory permission failure occurred before fitting one calibration job; identical-config recovery reused 179 finished calibration fits. See execution_incidents.json. Clean review/raw archives and a separate email draft are provided locally; no email was sent. Reproduction should use a separate output workspace and matching recorded input hashes.
+
+
 ## Frozen final replay experiment — 26 October 2026
 
 The final balanced-plus-rare-quota method is complete at memory 60 and 300 per client: 48 calibration fits followed by 120 evaluations, ten seeds, three orders, federated and centralized. Read [SUMMARY.pdf](outputs/balanced_rare_report/SUMMARY.pdf) (two pages), [SUMMARY.md](outputs/balanced_rare_report/SUMMARY.md) and [INFO.md](outputs/balanced_rare_report/INFO.md) before older reports. Merged-Scan scoring is primary and the rare metric is now Slowloris recall alone. Exact-type results are sensitivity checks, including any differences in conclusions. No inference is made from five fragmentation examples.
