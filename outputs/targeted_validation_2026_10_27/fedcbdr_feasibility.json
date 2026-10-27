@@ -1,0 +1,31 @@
+{
+  "url": "https://github.com/qizhuang-qz/FedCBDR",
+  "commit": "33b27549950a6c2a3962a4ea2f0ad92ee8743ec0",
+  "public_code_exists": true,
+  "missing_direct_local_imports": [
+    "methods.finetune",
+    "methods.icarl",
+    "methods.lwf",
+    "methods.ewc",
+    "methods.target",
+    "methods.lander",
+    "methods.A",
+    "methods.re_fed"
+  ],
+  "readme_method": "C",
+  "implemented_methods_in_dispatch": [
+    "icarl",
+    "ewc",
+    "lwf",
+    "finetune",
+    "target",
+    "lander",
+    "a",
+    "b",
+    "re_fed"
+  ],
+  "image_pipeline": true,
+  "cuda_calls": true,
+  "decision": "Do not run an invented partial baseline. Checkout lacks several directly imported local modules and README method C is not dispatched. Remaining code expects image arrays/PIL, image datasets/ResNet and CUDA; faithful tabular MLP port requires substantial reconstruction. Use requested explicit related-work distinction instead.",
+  "method_difference": "FedCBDR globally coordinates class-level replay construction and changes logit/objective balancing; our allocator uses only local prior memory plus current fitting rows and adds no allocation-related communication."
+}

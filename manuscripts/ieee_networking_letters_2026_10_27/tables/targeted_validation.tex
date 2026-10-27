@@ -1,0 +1,27 @@
+\subsection{Additional splits and allocation ablation}
+We repeat only class-balanced versus \BR\ at memory 60 with three additional role-split seeds, 43--45. The sampled traffic, seed-42 client allocation, original model, task orders and training settings remain fixed. For each split/order, Task-1 fitting preprocessing is refitted and frozen; both methods and environments share it. Each method selects replay settings on that split's calibration roles using the unchanged criterion, before any new evaluation. Ten training seeds and all three orders are retained.
+
+\begin{table}[t]
+\centering
+\caption{Memory-60 \BR\ minus class-balanced, merged scores; percentage points [95\% paired interval]. Each row averages orders within ten paired training seeds.}
+\label{tab:splits}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrr}
+\toprule
+Split & Setting & Old accuracy & Slowloris\\
+\midrule
+42 & Fed. & $+1.53$ $[0.23,2.84]$ & $+5.06$ $[1.27,8.84]$\\
+42 & Central & $+1.67$ $[1.12,2.22]$ & $+5.00$ $[3.04,6.96]$\\
+43 & Fed. & $+2.23$ $[0.95,3.51]$ & $+7.93$ $[4.03,11.83]$\\
+43 & Central & $+1.11$ $[0.47,1.74]$ & $+3.48$ $[1.31,5.65]$\\
+44 & Fed. & $+3.37$ $[2.11,4.63]$ & $+11.28$ $[7.59,14.97]$\\
+44 & Central & $+1.13$ $[-0.19,2.46]$ & $+3.80$ $[-0.79,8.39]$\\
+45 & Fed. & $+2.06$ $[0.40,3.72]$ & $+6.09$ $[1.30,10.88]$\\
+45 & Central & $+0.82$ $[0.01,1.63]$ & $+2.61$ $[-0.01,5.22]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+In the federated setting, old-accuracy differences are positive on 4/4 splits and significant on 4/4; Slowloris differences are positive on 4/4 and significant on 4/4. Worst-client differences are significantly unfavorable on 0/4. In the centralized setting, old-accuracy differences are positive on 4/4 splits and significant on 3/4; Slowloris differences are positive on 4/4 and significant on 2/4. Worst-client differences are significantly unfavorable on 0/4. Table~\ref{tab:splits} and the accompanying evidence retain every split and per-order result.
+
+The optional rare+random policy reserves a calibrated rare share and fills the rest uniformly, with no benign minimum. On the original split, its federated differences from protected are old accuracy $-0.76$ $[-3.06,1.54]$, Slowloris $+2.05$ $[0.69,3.41]$, and worst-client $+1.47$ $[-2.19,5.12]$. Against rare+random, \BR\ changes old accuracy by $+13.45$ $[10.83,16.06]$, Slowloris by $-8.16$ $[-11.62,-4.71]$, and worst-client by $+30.41$ $[26.61,34.21]$. This comparison exposes the allocation trade-off; detailed selected quotas and all losses accompany the results.

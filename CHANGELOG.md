@@ -1,3 +1,9 @@
+## 0.2.5 - 2026-10-27
+
+- Added three fixed-allocation role-split checks and a rare+random/no-benign ablation: 132 calibration fits and 420 evaluated models.
+- Added both scoring views, all split/order paired intervals, provenance and FedCBDR feasibility checks, and a revised 17-reference letter.
+- Preserved original study and exploratory tuning separately; no evaluation-based redesign.
+
 # Changelog
 
 ## 0.2.4 - 2026-10-27
