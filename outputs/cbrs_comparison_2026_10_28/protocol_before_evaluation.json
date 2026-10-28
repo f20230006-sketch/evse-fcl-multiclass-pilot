@@ -1,0 +1,118 @@
+{
+  "config": {
+    "experiment": "cbrs_comparison_2026_10_28",
+    "data": "data/official/network_traffic",
+    "label_column": "Label",
+    "max_rows_per_attack": 3000,
+    "sampling_seed": 42,
+    "split_seed": 42,
+    "calibration_seed": 42,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "orders": {
+      "order_1": [
+        "reconnaissance",
+        "flooding",
+        "low_rate_rare",
+        "post_rare_vulnerability"
+      ],
+      "order_2": [
+        "flooding",
+        "reconnaissance",
+        "post_rare_vulnerability",
+        "low_rate_rare"
+      ],
+      "order_3": [
+        "low_rate_rare",
+        "post_rare_vulnerability",
+        "flooding",
+        "reconnaissance"
+      ]
+    },
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "optimizer": "Adam",
+    "local_epochs": 5,
+    "rounds_per_task": 5,
+    "batch_size": 128,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": null,
+    "numeric_z_clip": 5.0,
+    "role_fractions": [
+      0.65,
+      0.15,
+      0.2
+    ],
+    "federated_memory_per_client": 60,
+    "centralized_memory_total": 300,
+    "protected_minimum_fraction": 0.2,
+    "fisher_max_examples_per_client_task": 128,
+    "workers": 8,
+    "torch_threads_per_worker": 1,
+    "environments": [
+      "federated",
+      "centralized"
+    ],
+    "methods": [
+      "cbrs_60"
+    ],
+    "output_dir": "outputs/cbrs_comparison_2026_10_28",
+    "allow_insufficient_benign": true,
+    "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets.",
+    "reference_output": "outputs/multiclass_full_comparison",
+    "centralized_budget_rule": "five times per-client budget",
+    "class_balance_rule": "Published CBRS Algorithm 1 with persistent full-class flags and encounter counters; task-boundary stream ingestion once per fitting flow; fixed uniform replay retrieval and existing loss.",
+    "selection_criterion": "Unchanged mean checkpoint original-type calibration macro recall; seed 42; ties first grid candidate. Merged-Scan evaluation primary; no evaluation-based tuning.",
+    "grid": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ]
+  },
+  "source_hashes": {
+    "configs\\cbrs_comparison_2026_10_28.json": "c2e60cc6727eae19aca29f626cd7c9a479b879c02aab03907140147bb9058c21",
+    "scripts\\run_cbrs_comparison.py": "c45cc7fd3362465dee914fca09fb4a00c2636d89fc5b213316aa6e2b15c06f4e",
+    "src\\evse_ids\\cbrs.py": "008f7a45a3db94b410cdedae29ee4669b1ee9221e3006971bfbe18884deaeb4b",
+    "src\\evse_ids\\cbrs_experiment.py": "5738ada075cce0c59a336a50d04560c4b219364eaeeefa5779b67f7d043a28ee",
+    "docs\\research\\CBRS_Frozen_Design_2026_10_28.md": "7ad461b932214870eaf1541a98e8eba7f5075684290339e929ac447ad199b226"
+  },
+  "inherited_hashes": {
+    "src/evse_ids/balanced_rare.py": "d3790f6c688fa316fb408fd5edead5cf16e4c96987a5901540a3cf8d116bedb8",
+    "src/evse_ids/balanced_rare_allocator.py": "f895e7355e428b6dc764878965c18c1852df3909fde88d7bf440e7619f7885ff",
+    "src/evse_ids/replay_followup.py": "5e12b201d52de84f292e1431a7482a2a45e7de6a3ef17efbc3df14dab60b99d5",
+    "scripts/run_balanced_rare_final.py": "d61038f9000997a4e8806cbfa4c4385247bd7bde0d6d1faa3658c11a9e62ad9c",
+    "docs/research/Balanced_Rare_Frozen_Design_2026_10_26.md": "1c8459c2e7dfaf3445caef20f4d2a48509a1dd829e5f499767554941f00b66b9",
+    "configs/balanced_rare_final.json": "a1bfa3dc3c3666117d90b8ddc7b13c4fc12d09f97f73bb03484eec61fbcd85f0",
+    "src/evse_ids/full_comparison.py": "368f3191e9f88f103a542cf6695ee21c3f8bcb3b9461bc33170d2373db5ed79e",
+    "src/evse_ids/multiclass_pilot.py": "53d564a043e67d3e52205ad5d884eea2396990212edd23cd34d012bc848821e2",
+    "src/evse_ids/continual_ablation.py": "d4f230ab7a712daeaefb7aa875d17d884774d90df7319c4dcf2cba30ba87e08d",
+    "src/evse_ids/continual_stable.py": "4a3d8d61175798657d7a40ae65f5bfce0a96de1d5746d33e38efe12cdc46e886",
+    "src/evse_ids/data.py": "51599b619e5aecc2a15672b02850403d2d4038e6590c222127dfc96000d581a5",
+    "src/evse_ids/validation.py": "c0f11021ffbc1ec9161452676540b6b39f1b446d38256c0fafe8f014c069b35f",
+    "scripts/run_full_multiclass_comparison.py": "ea853263357f3167c9f4199a20ab64d58f198ebaaba495b6ab0ff644e31a945d",
+    "configs/multiclass_full_comparison.json": "40525d06440ee5591dd23cd97d927ecbd2f7965ca0bb0ac7ccd06d5cb0322e7f"
+  },
+  "input_hashes": {
+    "outputs\\multiclass_full_comparison\\splits\\order_1\\prepared_local_only.pt": "2f1131533c9cd48a341b51d4e2453e9d7a6c232dfc5e11dbad670d223aa480d1",
+    "outputs\\multiclass_full_comparison\\splits\\order_2\\prepared_local_only.pt": "de4f32f3edf6233f7fc475dbeaf42a17bebd91c5706b808c7bbeea68a6b15736",
+    "outputs\\multiclass_full_comparison\\splits\\order_3\\prepared_local_only.pt": "7a2bdd9137ccb5e96be9b8ca5aa994f272fcda8c4631e3e186fcd06799191436"
+  },
+  "fingerprint": "88b00d98823925480c99c87ff2eeb767b7449dea242b29d891ea965cb899bea0"
+}

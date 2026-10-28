@@ -1,3 +1,9 @@
+## 0.2.6 - 2026-10-28
+
+- Added published streaming CBRS population under the fixed replay protocol: 12 calibration fits and 60 evaluations, both environments, all orders and ten seeds.
+- Added all paired comparisons, exact-type uncertainty and order-specific losses with full model/population verification.
+- Revised the IEEE letter to four pages with consistent RBR naming, implementation details in the repository and requested author fields.
+
 ## 0.2.5 - 2026-10-27
 
 - Added three fixed-allocation role-split checks and a rare+random/no-benign ablation: 132 calibration fits and 420 evaluated models.

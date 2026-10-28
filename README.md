@@ -1,5 +1,16 @@
 # EVSE multiclass federated continual learning
 
+## CBRS population comparison and four-page letter - 28 October 2026
+
+The requested sole additional baseline is complete: published CBRS Algorithm 1, original split 42, capacity 60/client (300 pooled), three orders, ten training seeds and both environments. Only replay fraction 0.25/0.50 is calibrated, using the unchanged criterion. Twelve calibration fits finish before sixty evaluations. The [frozen design](docs/research/CBRS_Frozen_Design_2026_10_28.md) fixes stream handling, persistent full flags/counters and task-boundary integration under the shared replay loss.
+
+Read [SUMMARY.pdf](outputs/cbrs_report_2026_10_28/SUMMARY.pdf), [complete notes and tables](outputs/cbrs_report_2026_10_28/INFO.md), [four-page manuscript](manuscripts/ieee_networking_letters_cbrs_2026_10_28/main.pdf) and [implementation details](docs/research/Implementation_Details_2026_10_28.md). RBR is the short name for unchanged historical balanced_rare outputs. At federated memory 60, merged old-accuracy/Slowloris/worst-client gains over CBRS are 1.64/4.04/1.16 points with intervals excluding zero. The exact-type old/Slowloris comparisons are not significant; centralized order-2 Slowloris favors CBRS. All losses remain visible. This is the published population policy under the accepted task-based training protocol, not the paper's complete weighted-retrieval online-learning recipe.
+
+Verification covers 60 saved models, 240 checkpoints, 1,182,880 prediction rows, 1,410,780 stream arrivals and 64 paired intervals. Independent-reference tests check population updates and persistent state. The manuscript has four pages, a 91-word abstract and 18 references; it uses RBR in text/tables/figure, moves implementation details here, and retains requested author/affiliation placeholders. No submission or email was sent. Clean result archives exclude reply files; raw probabilities are supplied separately.
+
+Reproduction: `python tests/test_cbrs.py`, `python scripts/run_cbrs_comparison.py`, `python scripts/analyze_cbrs_comparison.py`, `python scripts/verify_cbrs_comparison.py`, then report and letter builders. Obtain original flow CSVs and matching prepared inputs; immutable fingerprints prevent overwriting earlier experiments with a changed design.
+
+
 ## Targeted validation and revised letter - 27 October 2026
 
 Read [two-page summary](outputs/targeted_validation_report_2026_10_27/SUMMARY.pdf), [complete numerical notes](outputs/targeted_validation_report_2026_10_27/INFO.md), and the [revised letter](manuscripts/ieee_networking_letters_2026_10_27/main.pdf). This round preserves the accepted 64/32 MLP and excludes the separate exploratory tuning from the manuscript results.
@@ -13,7 +24,7 @@ Code, configs, split manifests, calibration records, all final weights, per-run/
 Reproduce in a separate output workspace with the original input sample and hashes. Run `scripts/run_targeted_validation.py`, `scripts/inspect_targeted_sources.py`, `scripts/analyze_targeted_validation.py`, and `scripts/verify_targeted_validation.py`. The public FedCBDR checkout is needed only for its read-only feasibility check. Core numerical runs do not depend on that checkout.
 
 
-## Exploratory model tuning — 27 October 2026
+## Exploratory model tuning â€” 27 October 2026
 
 A separately authorized follow-up tests six common model configurations, then replay fractions 0.25/0.50/0.75 and rare shares 0.10/0.20. Class-balanced, protected and balanced+rare share the calibration-selected backbone; 180 calibration fits finish before 180 evaluations across both environments, all orders and ten seeds, memory 60/client. Read [SUMMARY.pdf](outputs/exploratory_tuning_report_2026_10_27/SUMMARY.pdf), [complete results](outputs/exploratory_tuning_report_2026_10_27/INFO.md) and the [design](docs/research/Exploratory_Tuning_Design_2026_10_27.md).
 
@@ -22,7 +33,7 @@ This is exploratory: the earlier evaluation outcomes were already known. The cal
 Verification covers all new models, predictions, buffer policies, frozen digests and selection timing. An initial Windows output-directory permission failure occurred before fitting one calibration job; identical-config recovery reused 179 finished calibration fits. See execution_incidents.json. Clean review/raw archives and a separate email draft are provided locally; no email was sent. Reproduction should use a separate output workspace and matching recorded input hashes.
 
 
-## Frozen final replay experiment — 26 October 2026
+## Frozen final replay experiment â€” 26 October 2026
 
 The final balanced-plus-rare-quota method is complete at memory 60 and 300 per client: 48 calibration fits followed by 120 evaluations, ten seeds, three orders, federated and centralized. Read [SUMMARY.pdf](outputs/balanced_rare_report/SUMMARY.pdf) (two pages), [SUMMARY.md](outputs/balanced_rare_report/SUMMARY.md) and [INFO.md](outputs/balanced_rare_report/INFO.md) before older reports. Merged-Scan scoring is primary and the rare metric is now Slowloris recall alone. Exact-type results are sensitivity checks, including any differences in conclusions. No inference is made from five fragmentation examples.
 
@@ -33,7 +44,7 @@ Code, configs, all calibration records, memory partitions and final weights are 
 Reproduce only intentionally in a separate output workspace, retaining original prepared inputs. Run `scripts/run_balanced_rare_final.py`, `scripts/verify_balanced_rare_final.py`, `scripts/analyze_balanced_rare_final.py`, then `scripts/verify_balanced_rare_report.py`. Read the recorded protocols and existing evidence first. The frozen source/input hashes prevent silently resuming changed experiments.
 
 
-## Final checks — 17 October 2026
+## Final checks â€” 17 October 2026
 
 Read the [two-page summary](outputs/final_scan_analysis/SUMMARY.pdf) or [Markdown summary](outputs/final_scan_analysis/SUMMARY.md), then [INFO.md](outputs/final_scan_analysis/INFO.md) for all merged/rare/client tables. The scan-only Random Forest achieves 34.25% versus 16.67% chance, so intrinsic indistinguishability of all six scans is not established. All 840 saved MLP runs were re-scored without retraining. Separate Slowloris/fragmentation recalls and paired federation interactions are included; the memory-60 protection-over-uniform interaction is not significant. The supported Slowloris interaction at memory 300 is exploratory and unadjusted for multiplicity.
 
