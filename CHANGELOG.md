@@ -1,3 +1,9 @@
+## 0.2.7 - 2026-11-09
+
+- Preserved the current paper and baseline evidence with a verified 19,917-file freeze.
+- Added separately fixed adaptive-quota and teacher-distillation studies, all outcomes, calibration records and role/model verification.
+- Added a four-page exploratory extension while retaining the original primary comparison and negative findings.
+
 ## 0.2.6 - 2026-10-28
 
 - Added published streaming CBRS population under the fixed replay protocol: 12 calibration fits and 60 evaluations, both environments, all orders and ten seeds.

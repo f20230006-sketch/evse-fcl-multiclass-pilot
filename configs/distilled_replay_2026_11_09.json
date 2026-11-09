@@ -1,0 +1,197 @@
+{
+  "experiment": "distilled_replay_2026_11_09",
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "split_seed": 63,
+  "calibration_seed": 200,
+  "seeds": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209
+  ],
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "protected_minimum_fraction": 0.2,
+  "fisher_max_examples_per_client_task": 128,
+  "workers": 8,
+  "torch_threads_per_worker": 1,
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "methods": [
+    "class_balanced",
+    "cbrs",
+    "fixed_rbr",
+    "class_balanced_kd",
+    "fixed_rbr_kd"
+  ],
+  "output_dir": "outputs/distilled_replay_2026_11_09",
+  "allow_insufficient_benign": true,
+  "user_authorization": "9 November 2026: freeze the current paper and comparisons first, then implement and evaluate a separately documented improvement study.",
+  "reference_output": "outputs/multiclass_full_comparison",
+  "centralized_budget_rule": "five times per-client budget",
+  "class_balance_rule": "Four memory policies under the same replay loss, with locally monitored adaptive rare reservation as specified in the frozen design.",
+  "selection_criterion": "Mean original-type calibration macro recall over all six phase checkpoints; first grid item wins exact ties; training seed100. No evaluation access before all calibration fits complete.",
+  "phases": 6,
+  "offsets": [
+    0,
+    1,
+    0,
+    2,
+    1
+  ],
+  "monitor_min_examples": 5,
+  "attack_order": [
+    "low_rate_rare",
+    "post_rare_vulnerability",
+    "flooding",
+    "reconnaissance"
+  ],
+  "schedules": [
+    "delayed"
+  ],
+  "grids": {
+    "class_balanced": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ],
+    "cbrs": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ],
+    "fixed_rbr": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.2
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.2
+      }
+    ],
+    "class_balanced_kd": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ],
+    "fixed_rbr_kd": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.1,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.1,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.1,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.1,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.2,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.2,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.2,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.2,
+        "distillation_weight": 1.0
+      }
+    ]
+  },
+  "primary_success": "Delayed federated distilled RBR minus fixed RBR: Slowloris lower95%>0 and old/worst lower95%>-0.01. Additional distilled-class-balanced control separates allocation from teacher effects. All outcomes reported.",
+  "scope": "Second exploratory direction after negative adaptive-quota study. Split63 is a new prospective partition of the same previously used corpus, not independent external confirmation. Distillation is established prior art; no novelty or SOTA claim."
+}

@@ -1,5 +1,14 @@
 # EVSE multiclass federated continual learning
 
+## Frozen baseline and exploratory extensions - 9 November 2026
+
+The current illustrated paper and accepted comparisons are preserved by a 19,917-file SHA-256 manifest; the self-contained frozen archive remains local because of its size. Two separate exploratory designs completed 88 calibration fits and 260 evaluated runs. See the [adaptive-quota results](outputs/asynchronous_replay_report_2026_11_09/RESULTS.md) and [teacher-distillation results](outputs/distilled_replay_report_2026_11_09/RESULTS.md).
+
+The adaptive controller did not pass its delayed-federated screen. On a different prospective partition of the reused corpus, RBR with teacher distillation improved old accuracy by 4.99 points [1.05,8.93], Slowloris by 11.42 [1.63,21.20], and worst-client score by 3.25 [0.29,6.21] over matched RBR. Against class-balanced with the same teacher, only Slowloris improved significantly; worst-client non-inferiority is not established. These are unadjusted exploratory results on one rare-first delayed order, not external confirmation or a novel distillation claim. The [separate four-page extension](manuscripts/ieee_networking_letters_extension_2026_11_09/main.pdf) preserves the original primary comparison and discloses both outcomes. Teacher model RAM and compute are additional.
+
+To reproduce from the local archives, restore the frozen archive into a project root, overlay the `source/` contents from the new raw archive, then restore its `outputs/` directory beneath that same root. The large model/prediction archives are kept locally; this repository contains code, designs, calibration records, manifests and compact numerical reports.
+
+
 ## CBRS population comparison and four-page letter - 28 October 2026
 
 The requested sole additional baseline is complete: published CBRS Algorithm 1, original split 42, capacity 60/client (300 pooled), three orders, ten training seeds and both environments. Only replay fraction 0.25/0.50 is calibrated, using the unchanged criterion. Twelve calibration fits finish before sixty evaluations. The [frozen design](docs/research/CBRS_Frozen_Design_2026_10_28.md) fixes stream handling, persistent full flags/counters and task-boundary integration under the shared replay loss.

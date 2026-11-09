@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+\usepackage{booktabs,geometry}\geometry{margin=0.75in}
+\title{\large Supporting Results: Rare-Reserved Balanced Replay}
+\author{[Author names]}\date{}
+\begin{document}\maketitle
+\noindent These tables retain the original client-allocation rules, capacity comparison and additional-split results. Values are unchanged from the verified 28 October analysis. The main letter presents the primary comparison and exact-type sensitivity.
+\begin{table}[!ht]
+\centering
+\caption{Label-dependent client allocation weights (\%). Vulnerability uses the rare allocation row but is outside the reserved group.}
+\label{tab:allocation}
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+Group & Recon. & Flood & Rare & Mixed & Starved\\
+\midrule
+Benign &55&15&10&20&0\\
+Reconnaissance &55&10&5&20&10\\
+Flooding &10&55&5&20&10\\
+Rare / vulnerability &5&5&55&25&10\\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[!ht]
+\centering
+\caption{Federated memory 60/client, original split 42. Merged-Scan scores (\%); mean $\pm$ SD of ten seed averages over three orders. Worst is client macro recall.}
+\label{tab:main}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Old acc. $\uparrow$ & Forget $\downarrow$ & Slowloris $\uparrow$ & Worst $\uparrow$\\
+\midrule
+No replay & 22.22 $\pm$ 0.00 & 77.60 $\pm$ 0.02 & 33.33 $\pm$ 0.00 & 14.81 $\pm$ 0.00\\
+Uniform & 65.29 $\pm$ 2.92 & 34.53 $\pm$ 2.93 & 66.98 $\pm$ 7.02 & 45.50 $\pm$ 2.86\\
+Class-balanced & 83.99 $\pm$ 1.44 & 15.77 $\pm$ 1.42 & 71.56 $\pm$ 4.19 & 77.97 $\pm$ 1.05\\
+CBRS & 83.88 $\pm$ 1.12 & 15.89 $\pm$ 1.12 & 72.57 $\pm$ 2.04 & 77.87 $\pm$ 1.50\\
+Protected & 72.84 $\pm$ 2.25 & 26.84 $\pm$ 2.29 & 82.73 $\pm$ 2.36 & 47.15 $\pm$ 3.82\\
+RBR & 85.52 $\pm$ 1.27 & 14.24 $\pm$ 1.27 & 76.62 $\pm$ 4.16 & 79.03 $\pm$ 1.00\\
+EWC & 24.89 $\pm$ 1.30 & 74.95 $\pm$ 1.30 & 33.33 $\pm$ 0.00 & 17.15 $\pm$ 3.56\\
+A-GEM & 46.03 $\pm$ 4.58 & 53.80 $\pm$ 4.58 & 50.29 $\pm$ 4.68 & 37.12 $\pm$ 3.29\\
+Joint & 94.20 $\pm$ 0.07 & -- & 76.82 $\pm$ 0.17 & 77.89 $\pm$ 1.48\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\centering
+\caption{Federated memory 60, original split. Both views (\%, mean $\pm$ SD); CB denotes class-balanced.}
+\label{tab:type}
+\footnotesize
+\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{llrrrr}
+\toprule
+Method & View & Old acc. & Forget & Slowloris & Worst\\
+\midrule
+CB & Merged & 83.99 $\pm$ 1.44 & 15.77 $\pm$ 1.42 & 71.56 $\pm$ 4.19 & 77.97 $\pm$ 1.05\\
+CBRS & Merged & 83.88 $\pm$ 1.12 & 15.89 $\pm$ 1.12 & 72.57 $\pm$ 2.04 & 77.87 $\pm$ 1.50\\
+RBR & Merged & 85.52 $\pm$ 1.27 & 14.24 $\pm$ 1.27 & 76.62 $\pm$ 4.16 & 79.03 $\pm$ 1.00\\
+CB & Exact & 47.68 $\pm$ 1.68 & 34.97 $\pm$ 1.67 & 72.25 $\pm$ 4.12 & 51.71 $\pm$ 0.72\\
+CBRS & Exact & 49.35 $\pm$ 1.14 & 32.31 $\pm$ 1.02 & 74.70 $\pm$ 3.87 & 51.47 $\pm$ 0.89\\
+RBR & Exact & 49.58 $\pm$ 1.97 & 33.08 $\pm$ 1.99 & 78.27 $\pm$ 5.01 & 52.41 $\pm$ 0.69\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\centering
+\caption{Memory 300/client, same setting and scoring as Table~\ref{tab:main}.}
+\label{tab:capacity}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Old acc. $\uparrow$ & Forget $\downarrow$ & Slowloris $\uparrow$ & Worst $\uparrow$\\
+\midrule
+Class-balanced & 88.26 $\pm$ 0.76 & 11.43 $\pm$ 0.77 & 83.43 $\pm$ 1.02 & 81.48 $\pm$ 1.29\\
+Protected & 91.24 $\pm$ 0.52 & 8.15 $\pm$ 0.64 & 94.45 $\pm$ 1.97 & 75.72 $\pm$ 1.43\\
+RBR & 89.94 $\pm$ 0.98 & 9.50 $\pm$ 1.08 & 89.37 $\pm$ 2.87 & 81.91 $\pm$ 1.34\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+\centering
+\caption{RBR minus class-balanced at memory 60; percentage points [95\% paired interval].}
+\label{tab:splits}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrr}
+\toprule
+Split & Setting & Old accuracy & Slowloris\\
+\midrule
+42 & Fed. & $+1.53$ $[0.23,2.84]$ & $+5.06$ $[1.27,8.84]$\\
+42 & Central & $+1.67$ $[1.12,2.22]$ & $+5.00$ $[3.04,6.96]$\\
+43 & Fed. & $+2.23$ $[0.95,3.51]$ & $+7.93$ $[4.03,11.83]$\\
+43 & Central & $+1.11$ $[0.47,1.74]$ & $+3.48$ $[1.31,5.65]$\\
+44 & Fed. & $+3.37$ $[2.11,4.63]$ & $+11.28$ $[7.59,14.97]$\\
+44 & Central & $+1.13$ $[-0.19,2.46]$ & $+3.80$ $[-0.79,8.39]$\\
+45 & Fed. & $+2.06$ $[0.40,3.72]$ & $+6.09$ $[1.30,10.88]$\\
+45 & Central & $+0.82$ $[0.01,1.63]$ & $+2.61$ $[-0.01,5.22]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section*{Scope and interpretation}
+The main letter focuses on the allocation comparison. This supplement retains the complete main table, exact-type sensitivity, memory-300 comparison and all federated/centralized split comparisons. No new training or selection was performed for this revision.
+
+RBR has lower Slowloris recall than protected replay at memory 60 and 300. At memory 300, protected also exceeds RBR on old accuracy. RBR's federated exact-type old-accuracy and Slowloris differences against CBRS are not significant; centralized order 2 favors CBRS on Slowloris. Per-order results and intervals remain in the accompanying CSVs.
+
+\section*{Validation boundaries}
+Data come from one dataset and constructed clients. Role splits overlap and are not independent captures. Source filenames provide file groups, but no explicit session/capture column was found; only two benign and two Slowloris files prevent all three roles from having whole-file support. Sixteen benign and five fragmentation evaluation flows preclude reliable false-alarm and fragmentation claims. Task-1 categorical vocabularies differ by order, mixing representation and sequence effects. Intervals use ten paired training-seed averages across three orders and are unadjusted for multiple comparisons. Non-significance does not establish non-inferiority.
+
+The CBRS population is evaluated under the shared task-boundary protocol and uniform replay retrieval, not the original paper's separate weighted-replay training recipe. Its federated retention/Slowloris significance depends on merged scoring. The rare+random ablation also varies calibrated quotas and within-group sampling, limiting single-component causal attribution. EWC was calibrated over a limited lambda range. A faithful tabular FedCBDR baseline is outside scope. Replay capacity counts rows, not total RAM; deployment, attack blocking and formal privacy guarantees were not evaluated.
+\end{document}

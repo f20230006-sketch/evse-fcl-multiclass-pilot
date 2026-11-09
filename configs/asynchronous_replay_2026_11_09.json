@@ -1,0 +1,147 @@
+{
+  "experiment": "asynchronous_replay_2026_11_09",
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "split_seed": 62,
+  "calibration_seed": 100,
+  "seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "protected_minimum_fraction": 0.2,
+  "fisher_max_examples_per_client_task": 128,
+  "workers": 8,
+  "torch_threads_per_worker": 1,
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "methods": [
+    "class_balanced",
+    "cbrs",
+    "fixed_rbr",
+    "adaptive_rbr"
+  ],
+  "output_dir": "outputs/asynchronous_replay_2026_11_09",
+  "allow_insufficient_benign": true,
+  "user_authorization": "9 November 2026: freeze the current paper and comparisons first, then implement and evaluate a separately documented improvement study.",
+  "reference_output": "outputs/multiclass_full_comparison",
+  "centralized_budget_rule": "five times per-client budget",
+  "class_balance_rule": "Four memory policies under the same replay loss, with locally monitored adaptive rare reservation as specified in the frozen design.",
+  "selection_criterion": "Mean original-type calibration macro recall over all six phase checkpoints; first grid item wins exact ties; training seed100. No evaluation access before all calibration fits complete.",
+  "phases": 6,
+  "offsets": [
+    0,
+    1,
+    0,
+    2,
+    1
+  ],
+  "monitor_min_examples": 5,
+  "attack_order": [
+    "low_rate_rare",
+    "post_rare_vulnerability",
+    "flooding",
+    "reconnaissance"
+  ],
+  "schedules": [
+    "synchronized",
+    "delayed"
+  ],
+  "grids": {
+    "class_balanced": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ],
+    "cbrs": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ],
+    "fixed_rbr": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "rare_quota_fraction": 0.2
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "rare_quota_fraction": 0.2
+      }
+    ],
+    "adaptive_rbr": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "maximum_rare_fraction": 0.2
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "maximum_rare_fraction": 0.2
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "maximum_rare_fraction": 0.3
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "maximum_rare_fraction": 0.3
+      }
+    ]
+  },
+  "primary_success": "Delayed federated adaptive minus fixed RBR: Slowloris CI lower>0, old accuracy and worst-client CI lower>-0.01. Also report all baseline comparisons, both score views and both schedules/environments.",
+  "scope": "Prospective new partition of a reused corpus, not independent or genuinely unseen external data. One rare-first order, fixed active-task exposure per client; extra staggered server updates and optimizer resets are measured, not claimed perfectly compute-matched. No universal SOTA or novelty claim."
+}
