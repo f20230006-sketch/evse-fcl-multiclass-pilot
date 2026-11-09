@@ -1,0 +1,329 @@
+{
+  "config": {
+    "data": "data/official/network_traffic",
+    "label_column": "Label",
+    "max_rows_per_attack": 3000,
+    "sampling_seed": 42,
+    "hidden_sizes": [
+      64,
+      32
+    ],
+    "optimizer": "Adam",
+    "local_epochs": 5,
+    "rounds_per_task": 5,
+    "batch_size": 128,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": null,
+    "numeric_z_clip": 5.0,
+    "role_fractions": [
+      0.65,
+      0.15,
+      0.2
+    ],
+    "federated_memory_per_client": 60,
+    "centralized_memory_total": 300,
+    "torch_threads_per_worker": 1,
+    "offsets": [
+      0,
+      1,
+      0,
+      2,
+      1
+    ],
+    "attack_order": [
+      "low_rate_rare",
+      "post_rare_vulnerability",
+      "flooding",
+      "reconnaissance"
+    ],
+    "environments": [
+      "federated",
+      "centralized"
+    ],
+    "experiment": "teacher_alignment_2026_11_09",
+    "output_dir": "outputs/teacher_alignment_2026_11_09",
+    "split_seed": 64,
+    "calibration_seeds": [
+      300,
+      301,
+      302
+    ],
+    "seeds": [
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319
+    ],
+    "workers": 8,
+    "phases": 6,
+    "gate_margin": 0.002,
+    "grids": {
+      "rbr_legacy": [
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        }
+      ],
+      "rbr_global": [
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        }
+      ],
+      "rbr_family": [
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.1,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "rare_quota_fraction": 0.2,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        }
+      ],
+      "cb_legacy": [
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        }
+      ],
+      "cb_family": [
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5,
+          "distillation_weight": 0.1
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.25,
+          "distillation_weight": 1.0
+        },
+        {
+          "learning_rate": 0.003,
+          "replay_fraction": 0.5,
+          "distillation_weight": 1.0
+        }
+      ]
+    },
+    "aliases": {
+      "legacy_exact": {
+        "population": "rbr_legacy",
+        "criterion": "original_type"
+      },
+      "legacy_merged": {
+        "population": "rbr_legacy",
+        "criterion": "merged_scans"
+      },
+      "global": {
+        "population": "rbr_global",
+        "criterion": "merged_scans"
+      },
+      "family": {
+        "population": "rbr_family",
+        "criterion": "merged_scans"
+      },
+      "cb_legacy": {
+        "population": "cb_legacy",
+        "criterion": "merged_scans"
+      },
+      "cb_family": {
+        "population": "cb_family",
+        "criterion": "merged_scans"
+      }
+    },
+    "scope": "Diagnostics and corrective exploration on reused corpus; split64 is a prospective repartition, not external validation. No changes after evaluation. Selection averaged across three calibration training seeds; all outcomes retained."
+  },
+  "source_hashes": {
+    "configs\\teacher_alignment_2026_11_09.json": "61ec667477fea29b03ef58eda706d9b9a927032dfe93f675259f66850158b957",
+    "scripts\\run_teacher_alignment.py": "0c82574d25a02802e0816906446f28a86fa19c05316373e37dbaf47d5ac747ee",
+    "src\\evse_ids\\teacher_alignment.py": "453979a37c4c8938b3e1296c68b3a4326bca775160f2b737520ee3f54d2622e7",
+    "docs\\research\\Teacher_Alignment_Design_2026_11_09.md": "9fe4c3e75ad10caa12df7cc79944a09d0e4ec110b4fd8047a10a72013fd066d1"
+  },
+  "inherited_hashes": {
+    "configs\\distilled_replay_2026_11_09.json": "62791ce02d80832054baf5ed9d452a01f7a287ac899ef9b600795cdec94baf52",
+    "scripts\\run_distilled_replay.py": "0a79b291435af58f065f1ebc628b78e0ac5e7f49c0719737aafebb4739396211",
+    "src\\evse_ids\\asynchronous_replay.py": "e7bcbc854ccbd77d8df405a496be8a25be99302d6cdd4505bf1047acddc1a11a",
+    "src\\evse_ids\\distilled_replay.py": "ec5a81af2273336f3b0d30bee4c0826db7b84c10688dbcf5f73c114a6fb4813e",
+    "docs\\research\\Distilled_Replay_Design_2026_11_09.md": "17695443c58297a12efbb7841484661671821026f6c6bcc6b940740bb8dbdc0f",
+    "src/evse_ids/__init__.py": "b6808fdb726e922d0ec0774e07a0cd0318417b7f02be8aa5b09b06c4ba6b6add",
+    "src/evse_ids/balanced_rare.py": "d3790f6c688fa316fb408fd5edead5cf16e4c96987a5901540a3cf8d116bedb8",
+    "src/evse_ids/balanced_rare_allocator.py": "f895e7355e428b6dc764878965c18c1852df3909fde88d7bf440e7619f7885ff",
+    "src/evse_ids/cbrs.py": "008f7a45a3db94b410cdedae29ee4669b1ee9221e3006971bfbe18884deaeb4b",
+    "src/evse_ids/cbrs_experiment.py": "5738ada075cce0c59a336a50d04560c4b219364eaeeefa5779b67f7d043a28ee",
+    "src/evse_ids/continual.py": "0f37d997c470763aa5660ff37151a72953c7c27aa4b18206a08d239c82456a5e",
+    "src/evse_ids/continual_ablation.py": "d4f230ab7a712daeaefb7aa875d17d884774d90df7319c4dcf2cba30ba87e08d",
+    "src/evse_ids/continual_safe.py": "f65687afe13a7943cdb9dbf3a677ebaca022966b1d342c132056960aacff85a8",
+    "src/evse_ids/continual_stable.py": "4a3d8d61175798657d7a40ae65f5bfce0a96de1d5746d33e38efe12cdc46e886",
+    "src/evse_ids/data.py": "51599b619e5aecc2a15672b02850403d2d4038e6590c222127dfc96000d581a5",
+    "src/evse_ids/experiments.py": "2eb32696ff92a7fbb62aa13680f1db95fbea70ddc62fb464216a84e2b31956d7",
+    "src/evse_ids/exploratory_tuning.py": "032d465006547abe4a860930d940b5ff13852e517bafcb0a503c72769b1cb1c7",
+    "src/evse_ids/federated.py": "1f335c53218414cea0e9247a9bca90e2106f378c81e4473151f57af598357b45",
+    "src/evse_ids/full_comparison.py": "368f3191e9f88f103a542cf6695ee21c3f8bcb3b9461bc33170d2373db5ed79e",
+    "src/evse_ids/metrics.py": "616be4f2799e2aa73908de1fe2753bfd32792053ebcc18aa750e7b51dce5f091",
+    "src/evse_ids/models.py": "f943e5819343aca637db421ed56526019fb3189833731264b350a4e1e45f0cac",
+    "src/evse_ids/multiclass_pilot.py": "53d564a043e67d3e52205ad5d884eea2396990212edd23cd34d012bc848821e2",
+    "src/evse_ids/replay_followup.py": "5e12b201d52de84f292e1431a7482a2a45e7de6a3ef17efbc3df14dab60b99d5",
+    "src/evse_ids/reporting.py": "61bbc022c7274cd29de26762097521a20e6738f7aa4003465a60fc464dce4584",
+    "src/evse_ids/scan_final.py": "9787964112cda529564596b036671d2ae40b22a72274cd9d4735cb6a7b388ea1",
+    "src/evse_ids/simulation.py": "7c632d70ea8583f242554e9b854691a7c6fee7a842fd85b5902dbfc2e5100e7d",
+    "src/evse_ids/targeted_validation.py": "391d2d3e6bed331b88e6e049ed0dd041f5f3dc9b1fa45024199afb048cd5c123",
+    "src/evse_ids/validation.py": "c0f11021ffbc1ec9161452676540b6b39f1b446d38256c0fafe8f014c069b35f"
+  },
+  "prepared_sha256": "698e744daedba1ad5dd89da918243ba4fd0b62787f560fbabefca28586271396",
+  "prior_results_lock_sha256": "de2cbdac8e3a8fbf34f0d7aee25771c1afeffa0f9032eed8d3a07ad1a7bce003",
+  "fingerprint": "0f80b1183043c069b09f01db981347730aabe32bfdbaf5308af384be42f6890b"
+}

@@ -1,5 +1,14 @@
 # EVSE multiclass federated continual learning
 
+## Teacher coverage and calibration corrections - 9 November 2026
+
+The [diagnosis](outputs/current_model_diagnostics_2026_11_09/DIAGNOSIS.md) found three late first-participation tasks with no old-class teacher protection and an exact-type calibration versus merged-Scan reporting mismatch. A calibration-only probe reproduced the prior trajectory exactly and did not support blaming immediate aggregation alone.
+
+A separately fixed corrective study averages calibration over three initialization seeds and compares criterion-only, global-coverage, family-distillation and class-balanced controls. See [all fixes and outcomes](outputs/teacher_alignment_deliverables_2026_11_09/ISSUES_FIXES_AND_RESULTS.md) and [recommended experimental settings](outputs/teacher_alignment_deliverables_2026_11_09/RECOMMENDED_SETTINGS.json). On the matched split64 delayed-federated test, corrected type-level RBR reaches 93.80% old accuracy and 89.97% Slowloris recall, versus 90.86%/76.42% for the original teacher/selection approach. The combined effects are +2.95 [1.25,4.65] and +13.55 [8.18,18.92] points. Worst-client change is uncertain. The family primary hypothesis failed and remains visible; the global variant had higher calibration score before evaluation.
+
+Both an independently calibrated global-teacher class-balanced baseline and a parameter-matched control were added transparently after primary evaluation, without retuning RBR. All outcomes and exact-type sensitivity are retained. The core study used192 calibration fits before120 evaluations; the matched baseline added24 calibration fits before20 evaluations, and the fixed-parameter control added10 evaluations. These are unadjusted exploratory, same-corpus results, not independent confirmation or a general SOTA claim. Five new unit tests passed; all prior paper and study locks remain unchanged. No existing manuscript has been replaced by this study.
+
+
 ## Frozen baseline and exploratory extensions - 9 November 2026
 
 The current illustrated paper and accepted comparisons are preserved by a 19,917-file SHA-256 manifest; the self-contained frozen archive remains local because of its size. Two separate exploratory designs completed 88 calibration fits and 260 evaluated runs. See the [adaptive-quota results](outputs/asynchronous_replay_report_2026_11_09/RESULTS.md) and [teacher-distillation results](outputs/distilled_replay_report_2026_11_09/RESULTS.md).

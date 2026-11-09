@@ -1,3 +1,9 @@
+## 0.2.8 - 2026-11-09
+
+- Diagnosed late-client teacher coverage and score-selection mismatch with calibration-only probes.
+- Added locked corrective ablations, three-seed calibration, global-teacher baselines and complete verification.
+- Preserved the negative family hypothesis, secondary global gains, uncertainty and all prior evidence.
+
 ## 0.2.7 - 2026-11-09
 
 - Preserved the current paper and baseline evidence with a verified 19,917-file freeze.

@@ -1,0 +1,45 @@
+{
+  "candidate": "RBR with type-level distillation and global prior-class coverage",
+  "selection_basis": "Pre-evaluation mean merged calibration macro recall across three training seeds; global was the higher-calibration-scoring corrective variant.",
+  "settings_by_environment": [
+    {
+      "environment": "federated",
+      "alias": "global",
+      "method": "rbr_global",
+      "settings": {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      },
+      "criterion": "merged_scans",
+      "selection_score": 0.915700089953201,
+      "trial_index": 7,
+      "training_seeds": [
+        300,
+        301,
+        302
+      ]
+    },
+    {
+      "environment": "centralized",
+      "alias": "global",
+      "method": "rbr_global",
+      "settings": {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      "criterion": "merged_scans",
+      "selection_score": 0.9480610270039819,
+      "trial_index": 1,
+      "training_seeds": [
+        300,
+        301,
+        302
+      ]
+    }
+  ],
+  "scope": "Exploratory same-corpus delayed-client study; no deployment or external-validation claim. Family distillation is not recommended from this experiment."
+}

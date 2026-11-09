@@ -1,0 +1,288 @@
+{
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "torch_threads_per_worker": 1,
+  "offsets": [
+    0,
+    1,
+    0,
+    2,
+    1
+  ],
+  "attack_order": [
+    "low_rate_rare",
+    "post_rare_vulnerability",
+    "flooding",
+    "reconnaissance"
+  ],
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "experiment": "teacher_alignment_2026_11_09",
+  "output_dir": "outputs/teacher_alignment_2026_11_09",
+  "split_seed": 64,
+  "calibration_seeds": [
+    300,
+    301,
+    302
+  ],
+  "seeds": [
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319
+  ],
+  "workers": 8,
+  "phases": 6,
+  "gate_margin": 0.002,
+  "grids": {
+    "rbr_legacy": [
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ],
+    "rbr_global": [
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ],
+    "rbr_family": [
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ],
+    "cb_legacy": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ],
+    "cb_family": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ]
+  },
+  "aliases": {
+    "legacy_exact": {
+      "population": "rbr_legacy",
+      "criterion": "original_type"
+    },
+    "legacy_merged": {
+      "population": "rbr_legacy",
+      "criterion": "merged_scans"
+    },
+    "global": {
+      "population": "rbr_global",
+      "criterion": "merged_scans"
+    },
+    "family": {
+      "population": "rbr_family",
+      "criterion": "merged_scans"
+    },
+    "cb_legacy": {
+      "population": "cb_legacy",
+      "criterion": "merged_scans"
+    },
+    "cb_family": {
+      "population": "cb_family",
+      "criterion": "merged_scans"
+    }
+  },
+  "scope": "Diagnostics and corrective exploration on reused corpus; split64 is a prospective repartition, not external validation. No changes after evaluation. Selection averaged across three calibration training seeds; all outcomes retained."
+}

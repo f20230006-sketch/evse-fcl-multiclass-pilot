@@ -1,0 +1,96 @@
+{
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "torch_threads_per_worker": 1,
+  "offsets": [
+    0,
+    1,
+    0,
+    2,
+    1
+  ],
+  "attack_order": [
+    "low_rate_rare",
+    "post_rare_vulnerability",
+    "flooding",
+    "reconnaissance"
+  ],
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "experiment": "teacher_global_control_2026_11_09",
+  "output_dir": "outputs/teacher_global_control_2026_11_09",
+  "split_seed": 64,
+  "calibration_seeds": [
+    300,
+    301,
+    302
+  ],
+  "seeds": [
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319
+  ],
+  "workers": 8,
+  "phases": 6,
+  "gate_margin": 0.002,
+  "grids": {
+    "cb_global": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 0.1
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25,
+        "distillation_weight": 1.0
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5,
+        "distillation_weight": 1.0
+      }
+    ]
+  },
+  "aliases": {
+    "cb_global": {
+      "population": "cb_global",
+      "criterion": "merged_scans"
+    }
+  },
+  "scope": "Post-evaluation matched baseline addition for fairness, not a retuned RBR model. Same split64, three calibration seeds, ten evaluation seeds, criterion and fixed grids; no confirmatory claim."
+}
