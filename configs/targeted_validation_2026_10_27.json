@@ -1,0 +1,140 @@
+{
+  "experiment": "targeted_validation_2026_10_27",
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "split_seed": 42,
+  "calibration_seed": 42,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "orders": {
+    "order_1": [
+      "reconnaissance",
+      "flooding",
+      "low_rate_rare",
+      "post_rare_vulnerability"
+    ],
+    "order_2": [
+      "flooding",
+      "reconnaissance",
+      "post_rare_vulnerability",
+      "low_rate_rare"
+    ],
+    "order_3": [
+      "low_rate_rare",
+      "post_rare_vulnerability",
+      "flooding",
+      "reconnaissance"
+    ]
+  },
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "protected_minimum_fraction": 0.2,
+  "fisher_max_examples_per_client_task": 128,
+  "workers": 3,
+  "torch_threads_per_worker": 1,
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "methods": [
+    "class_balanced_60",
+    "balanced_rare_60"
+  ],
+  "grids": {
+    "class_balanced_60": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ],
+    "balanced_rare_60": [
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.1,
+        "replay_fraction": 0.5
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "rare_quota_fraction": 0.2,
+        "replay_fraction": 0.5
+      }
+    ]
+  },
+  "output_dir": "outputs/targeted_validation_2026_10_27",
+  "allow_insufficient_benign": true,
+  "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets.",
+  "reference_output": "outputs/multiclass_full_comparison",
+  "centralized_budget_rule": "five times per-client budget",
+  "class_balance_rule": "Reserve floor(capacity * rare_quota_fraction) feasible rare-group slots using existing balanced allocator within rare types; fill remaining slots with existing balanced allocator over unreserved candidates including rare and benign; shortage redistribution; no duplicates; previous buffer plus current fitting only.",
+  "selection_criterion": "Unchanged mean checkpoint original-type calibration macro recall; seed 42; ties first grid candidate. Merged-Scan evaluation primary; no evaluation-based tuning.",
+  "additional_split_seeds": [
+    43,
+    44,
+    45
+  ],
+  "allocation_seed": 42,
+  "ablation_grid": [
+    {
+      "learning_rate": 0.003,
+      "rare_quota_fraction": 0.1,
+      "replay_fraction": 0.25
+    },
+    {
+      "learning_rate": 0.003,
+      "rare_quota_fraction": 0.1,
+      "replay_fraction": 0.5
+    },
+    {
+      "learning_rate": 0.003,
+      "rare_quota_fraction": 0.2,
+      "replay_fraction": 0.25
+    },
+    {
+      "learning_rate": 0.003,
+      "rare_quota_fraction": 0.2,
+      "replay_fraction": 0.5
+    }
+  ]
+}
