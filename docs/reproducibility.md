@@ -1,0 +1,15 @@
+# Reproducibility and artifact boundaries
+
+The reporting environment versions were checked on the working host. The supplied pins cover the report, not a fresh training-system lock. No fresh environment installation or end-to-end retraining was performed.
+
+The entry point joins the compact paper evidence with outputs/cbrs_report_2026_10_28/all_per_run_metrics.csv and outputs/targeted_validation_report_2026_10_27/all_per_run_metrics.csv. It requires the complete 10-seed, three-order grids. The verifier checks against the manuscript reference tables, checked against the authoritative November 23 Overleaf export (0.00501 percentage points, allowing rounding) and all 12 archived Figure 2 points and interval endpoints (1e-7 percentage points). The OCPP per-run and paired interval CSVs are saved summaries; they are not inputs to Tables I–III.
+
+Historical training runners: scripts/run_full_multiclass_comparison.py, scripts/run_replay_followup.py, scripts/run_balanced_rare_final.py, scripts/run_targeted_validation.py and scripts/run_cbrs_comparison.py. The first runner exposes --prepare-only; other runners may launch full workloads. Follow their dependency order and original configurations only on a separate writable workspace. The original Windows workspace paths, preparation caches and downstream checkpoint dependencies have not been validated in a fresh checkout. Keep requirements-multiclass.txt for historical training; the report requires no Torch. Do not run expensive stages merely to regenerate figures.
+
+For raw-prediction audits, separately restore the trusted local run trees balanced_rare_final, replay_followup_essential, cbrs_comparison_2026_10_28, targeted_validation_2026_10_27 and validation_extension_2026_11_12 under outputs, plus the original sampled cache, tensors and role manifests. These artifacts exist in the research workspace, but a reviewer-accessible raw archive has not been prepared here. Split 43–45 CBRS runs do not exist in the audited experiment. The duplicate sensitivity has a documented result here, but not a packaged raw-prediction rescore command. Load pickle and Torch artifacts only from trusted, verified sources; the table entry point reads only CSVs.
+
+The publication branch starts from the existing pilot main and adds no checkpoints, prepared tensors, raw datasets, or new row-level provenance exports. The historical full-multiclass-comparison branch remains separate; its artifacts are not mirrored here. A clean end-to-end training installation and reviewer access to raw evidence remain open. No release artifact or DOI is asserted.
+
+See the [November 23 manuscript audit](manuscript_verification_2026_11_23.md) for verified public branch contents and remaining reproduction gaps.
+
+The OCPP analyzer supports --external-only when the original rare-group raw runs are unavailable. Even in that mode it requires the separately restored OCPP per-example run tree. Saved OCPP metrics and intervals are included for inspection without downloads.
