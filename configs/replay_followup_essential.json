@@ -1,0 +1,88 @@
+{
+  "experiment": "replay_followup_essential",
+  "data": "data/official/network_traffic",
+  "label_column": "Label",
+  "max_rows_per_attack": 3000,
+  "sampling_seed": 42,
+  "split_seed": 42,
+  "calibration_seed": 42,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "orders": {
+    "order_1": [
+      "reconnaissance",
+      "flooding",
+      "low_rate_rare",
+      "post_rare_vulnerability"
+    ],
+    "order_2": [
+      "flooding",
+      "reconnaissance",
+      "post_rare_vulnerability",
+      "low_rate_rare"
+    ],
+    "order_3": [
+      "low_rate_rare",
+      "post_rare_vulnerability",
+      "flooding",
+      "reconnaissance"
+    ]
+  },
+  "hidden_sizes": [
+    64,
+    32
+  ],
+  "optimizer": "Adam",
+  "local_epochs": 5,
+  "rounds_per_task": 5,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": null,
+  "numeric_z_clip": 5.0,
+  "role_fractions": [
+    0.65,
+    0.15,
+    0.2
+  ],
+  "federated_memory_per_client": 60,
+  "centralized_memory_total": 300,
+  "protected_minimum_fraction": 0.2,
+  "fisher_max_examples_per_client_task": 128,
+  "workers": 3,
+  "torch_threads_per_worker": 1,
+  "environments": [
+    "federated",
+    "centralized"
+  ],
+  "methods": [
+    "class_balanced_60"
+  ],
+  "grids": {
+    "class_balanced_60": [
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.25
+      },
+      {
+        "learning_rate": 0.003,
+        "replay_fraction": 0.5
+      }
+    ]
+  },
+  "output_dir": "outputs/replay_followup_essential",
+  "allow_insufficient_benign": true,
+  "user_authorization": "Proceed with the requested full comparison using original data despite class imbalance; ignore supplied additional datasets.",
+  "reference_output": "outputs/multiclass_full_comparison",
+  "centralized_budget_rule": "five times per-client budget",
+  "class_balance_rule": "equal round-robin slots across candidate labels; shortage redistribution; no duplicates; no access to discarded historical rows"
+}
